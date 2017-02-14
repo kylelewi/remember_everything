@@ -1,9 +1,10 @@
 import React from 'react';
 import AuthContainer from './auth/auth_container';
+import Landing from './landing'
 
 const App = ({ children }) => (
-  <div>
-    <h1>Remember Everything</h1>
+  <div className="app">
+    <Landing />
     <AuthContainer />
     { children }
   </div>

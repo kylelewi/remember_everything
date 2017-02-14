@@ -1,3 +1,33 @@
 // Place all the styles related to the Sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+html, body, #root, .app {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.landing {
+  width: 50%;
+  height: 100%;
+  float: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0060bf;
+  color: white;
+}
+
+.session-form {
+  width: 50%;
+  height: 100%;
+  float: left;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
