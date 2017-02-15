@@ -45,7 +45,6 @@ class Login extends React.Component{
         }
       });
     }
-    debugger
     return returnError
   }
 
