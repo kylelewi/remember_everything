@@ -1,10 +1,16 @@
 class User < ActiveRecord::Base
 
 	attr_reader :password
-
-	validates :username, :password_digest, :session_token, presence: true
+	
+	before_save { self.email = email.downcase }
+	validates :username, :password_digest, :session_token,
+	 					:firstname, :lastname, :email, presence: true
 	validates :username, uniqueness: true
 	validates :password, length: {minimum: 6}, allow_nil: :true
+	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true, length: { maximum: 255 },
+                    format: { with: VALID_EMAIL_REGEX },
+                    uniqueness: { case_sensitive: false }
 
 	after_initialize :ensure_session_token
 

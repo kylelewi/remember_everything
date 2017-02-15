@@ -1,4 +1,4 @@
-html, body, div, figure, main, figcaption {
+html, body, div, figure, main, figcaption, header, h1, h2, h3 {
   margin: 0;
   padding: 0;
 }
