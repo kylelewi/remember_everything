@@ -2,7 +2,9 @@ import React from 'react';
 
 const Landing = props => (
   <div className="landing">
-    <figure className="logo-container"></figure>
+    <figure className="logo-container">
+      <img src={window.images.logo} />
+    </figure>
     <main className="landing-container">
       <figure className="landing-image"></figure>
       <figcaption className="landing-message">

@@ -17,9 +17,9 @@ const Auth = (props) => {
     )
   } else {
     return (
-      <div className="session-form">
+      <div className="session-links">
         <Link to={`/signup`}>Sign Up!</Link>
-        <p>Or</p>
+        <span>   Or   </span>
         <Link to={`/login`}>Log In</Link>
       </div>
     )

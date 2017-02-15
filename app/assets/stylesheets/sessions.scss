@@ -2,13 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-html, body, #root, .app {
+html, body, #root, .app, .home {
   width: 100%;
   height: 100%;
 }
 
 body {
   font-family: 'Roboto', sans-serif;
+}
+
+img {
+  width: 100%;
 }
 
 .landing {
@@ -22,7 +26,7 @@ body {
   color: white;
 }
 
-.session-form {
+.session-section {
   width: 50%;
   height: 100%;
   float: left;
@@ -30,4 +34,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+}
+
+.session-form {
+
+}
+
+.logo-container {
+  width: 20%;
+
 }
