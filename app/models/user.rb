@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 	attr_reader :password
 
 	has_many :tasks
+	has_many :lists
 
 	before_save { self.email = email.downcase }
 	validates :username, :password_digest, :session_token,

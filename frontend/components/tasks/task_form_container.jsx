@@ -5,7 +5,7 @@ import { createTask } from '../../actions/task_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
-  let task = { name: "", dueDate: "", estimate: "", notes: "", complete: false };
+  let task = { name: "", due_date: "", estimate: "", notes: "", complete: false };
   return { task };
 };
 

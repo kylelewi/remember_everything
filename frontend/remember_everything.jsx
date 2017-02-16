@@ -5,9 +5,14 @@ import Root from './components/root';
 import { login, signup, logout } from './actions/session_actions';
 import { fetchTasks, fetchTask, createTask } from './actions/task_actions';
 
+import { fetchLists, createList } from './actions/list_actions';
+
 window.login = login;
 window.signup = signup;
 window.logout = logout;
+
+window.fetchLists = fetchLists;
+window.createList = createList;
 
 
 
@@ -25,9 +30,6 @@ function checkCurrentUser() {
 document.addEventListener('DOMContentLoaded', () => {
   const store = checkCurrentUser();
   window.store = store;
-  window.fetchTasks = fetchTasks;
-  window.fetchTask = fetchTask;
-  window.createTask = createTask;
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={ store }/>, root);
 });

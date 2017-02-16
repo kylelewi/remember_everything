@@ -26,6 +26,6 @@ archived    | boolean   | not null, default: false
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-author_id   | integer   | not null, foreign key (references users), indexed
+user_id   | integer   | not null, foreign key (references users), indexed
 name        | string    | not null
 description | string    |
