@@ -33,8 +33,8 @@ class TaskForm extends React.Component {
           <label>Due Date:
             <input
               type="date"
-              value={this.state.dueDate}
-              onChange={this.update('dueDate')} />
+              value={this.state.due_date}
+              onChange={this.update('due_date')} />
           </label>
 
           <label>Time Estimate (in minutes):

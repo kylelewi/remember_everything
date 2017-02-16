@@ -7,6 +7,7 @@ import SessionFormContainer from './auth/session_form_container';
 import Home from './home';
 import AuthPage from './authpage/authpage';
 import Main from './main/main';
+import TaskShowContainer from './tasks/task_show_container';
 
 
 const Root = ({ store }) => {
@@ -27,11 +28,12 @@ const Root = ({ store }) => {
       <Router history={ hashHistory }>
 
         <Route path="/" component={ App }>
-          <IndexRoute component={Home} />
+          <IndexRoute component={Home} onEnter={redirectIfLoggedIn}/>
           <Route path="/login" component={ AuthPage } onEnter={redirectIfLoggedIn} />
           <Route path="/signup" component={ AuthPage } onEnter={redirectIfLoggedIn} />
-          <Route path="/main" component={ Main } onEnter={ensureLoggedIn} />
-
+          <Route path="/main" component={ Main } onEnter={ensureLoggedIn}>
+            <Route path="/main/:taskId" component={TaskShowContainer} />
+          </Route>
         </Route>
       </Router>
     </Provider>

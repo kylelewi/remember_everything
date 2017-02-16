@@ -1,0 +1,16 @@
+import { connect } from 'react-redux';
+import TaskShow from './task_show';
+import { fetchTask } from '../../actions/task_actions';
+
+const mapStateToProps = (state, ownProps) => ({
+  task: state.tasks[ownProps.params.taskId]
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchTask: id => dispatch(fetchTask(id))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TaskShow);

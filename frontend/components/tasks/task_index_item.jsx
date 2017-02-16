@@ -3,7 +3,7 @@ import { Link, hashHistory } from 'react-router';
 
 const TaskIndexItem = ({ task, router }) => (
   <li>
-    <Link to={`/tasks/${task.id}`}>
+    <Link to={`/main/${task.id}`}>
       {task.name}
     </Link>
   </li>
