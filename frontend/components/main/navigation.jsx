@@ -1,4 +1,5 @@
 import React from 'react';
+import Filters from './filters';
 
 const Navigation = props => (
   <div className="navigation-sidebar">
@@ -13,6 +14,7 @@ const Navigation = props => (
     </div>
 
     <div className="tasks-filter-container">
+      <Filters />
     </div>
 
     <div className="lists-index">

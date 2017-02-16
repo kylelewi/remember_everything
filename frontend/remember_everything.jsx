@@ -2,11 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
-import { login, signup, logout } from './actions/session_actions'
+import { login, signup, logout } from './actions/session_actions';
+import { fetchTasks, fetchTask, createTask } from './util/task_api_util';
 
 window.login = login;
 window.signup = signup;
 window.logout = logout;
+
+window.fetchTasks = fetchTasks;
+window.fetchTask = fetchTask;
+window.createTask = createTask;
 
 function checkCurrentUser() {
   let store;
