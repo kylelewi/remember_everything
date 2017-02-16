@@ -14,12 +14,6 @@ class Signup extends React.Component{
     this.props.clearErrors();
   }
 
-  redirectIfLoggedIn() {
-    if (this.props.loggedIn) {
-      this.props.router.push("/");
-    }
-  }
-
   update(field) {
     return e => {
       this.setState({[field]: e.target.value});
@@ -28,7 +22,7 @@ class Signup extends React.Component{
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.signup(this.state).then(() => this.props.router.goBack());
+    this.props.signup(this.state).then(() => this.props.router.push("/main"));
   }
 
   handleErrors(key) {

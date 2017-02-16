@@ -12,7 +12,6 @@ const Home = props => (
           <h1 className="logo-line-1">Remember</h1>
           <h1 className="logo-line-2">Everything</h1>
         </div>
-
       </figure>
       <navbar className="navbar">
         <Link to={"/contact"} className="nav-link">Contact us</Link>

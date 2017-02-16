@@ -12,6 +12,12 @@ body {
   line-height: 1.33
 }
 
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: left;
+}
+
 img {
   width: 100%;
 }
