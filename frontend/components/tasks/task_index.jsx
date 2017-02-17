@@ -16,10 +16,12 @@ class TaskIndex extends React.Component {
             this.props.tasks.map(task => (
               <TaskIndexItem
                 key={task.id}
+                router={this.props.router}
                 task={task} />
             ))
           }
         </ul>
+        { this.props.children }
       </div>
     );
   }

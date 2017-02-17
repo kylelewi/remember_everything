@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link, hashHistory } from 'react-router';
 
-const ListIndexItem = ({ task }) => (
+const ListIndexItem = ({ list }) => (
   <li>
-    <Link to={`/main/${list.id}`}>
+    <Link to={`/main/lists/${list.id}`}>
       {list.name}
     </Link>
   </li>

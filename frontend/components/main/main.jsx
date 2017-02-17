@@ -9,7 +9,6 @@ const Main = props => (
   <div className="main-container">
     <SearchbarContainer />
     <Navigation />
-    <TaskIndexContainer />
     { props.children }
   </div>
 );

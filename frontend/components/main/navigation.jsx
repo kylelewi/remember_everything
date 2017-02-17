@@ -1,5 +1,6 @@
 import React from 'react';
 import Filters from './filters';
+import ListIndexContainer from '../lists/list_index_container';
 
 const Navigation = props => (
   <div className="navigation-sidebar">
@@ -18,6 +19,7 @@ const Navigation = props => (
     </div>
 
     <div className="lists-index">
+      <ListIndexContainer />
     </div>
 
 

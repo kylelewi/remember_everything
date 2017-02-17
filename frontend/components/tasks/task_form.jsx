@@ -7,6 +7,10 @@ class TaskForm extends React.Component {
     this.state = this.props.task;
   }
 
+  componentDidMount() {
+    this.setState({list_id: this.props.params.listId});
+  }
+
   update(field) {
     return (e) => {
       this.setState({[field]: e.target.value});
