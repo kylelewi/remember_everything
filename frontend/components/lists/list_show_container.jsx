@@ -25,7 +25,6 @@ const mapStateToProps = (state, ownProps) => {
   // if (isEmpty(state.tasks)) {
   //   return { tasks: [] };
   // } else {
-  //   debugger
   //   return { tasks:  };
   // }
 };

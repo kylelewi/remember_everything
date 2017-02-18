@@ -18,6 +18,11 @@ export const createTask = task => dispatch => (
     .then(task => dispatch(receiveTask(task)))
 );
 
+export const updateTask = task => dispatch => (
+  APIUtil.updateTask(task)
+    .then(task => dispatch(receiveTask(task)))
+);
+
 export const receiveTasks = tasks => ({
   type: RECEIVE_TASKS,
   tasks

@@ -17,6 +17,16 @@ class Api::TasksController < ApplicationController
     end
   end
 
+  def update
+    @task = Task.find(params[:id])
+
+    if @task.update(task_params)
+      render :show
+    else
+      render json: @task.errors.full_messages, status: 422
+    end
+  end
+
   private
   def task_params
     params.require(:task)
