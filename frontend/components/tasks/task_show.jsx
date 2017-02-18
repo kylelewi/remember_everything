@@ -4,13 +4,11 @@ import { objectToArray } from '../../util/selectors';
 
 class TaskShow extends React.Component {
   componentDidMount() {
+    // debugger
   }
-  //
-  // componentWillReceiveProps(newProps) {
-  //   if (this.props.params.taskId !== newProps.params.taskId) {
-  //     this.props.fetchTask(newProps.params.taskId);
-  //   }
-  // }
+
+  componentWillReceiveProps(newProps) {
+  }
 
   complete() {
     let completeText;
