@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link, hashHistory } from 'react-router';
 
-const TaskIndexItem = ({ task, router }) => {
+const TaskIndexItem = ({ task, router, listId }) => {
 
   function setPathname(router) {
     let path;
     if (router.location.pathname.includes("list")) {
-      path = `${router.location.pathname}/tasks/${task.id}`;
+      path = `/main/lists/${listId}/tasks/${task.id}`;
     } else {
       path = `/main/tasks/${task.id}`;
     }
@@ -15,11 +15,13 @@ const TaskIndexItem = ({ task, router }) => {
   }
 
   return (
-    <li>
-      <Link to={setPathname(router)}>
+    <Link to={setPathname(router)}>
+      <li>
+        <div className="mini-line"></div>
+        <input type="checkbox" />
         {task.name}
-      </Link>
-    </li>
+      </li>
+  </Link>
   );
 }
 

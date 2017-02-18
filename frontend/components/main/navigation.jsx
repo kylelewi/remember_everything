@@ -4,8 +4,8 @@ import ListIndexContainer from '../lists/list_index_container';
 
 const Navigation = props => (
   <div className="navigation-sidebar">
-    <div className="navigation-logo-container">
-      <figure className="logo-container-main">
+    <div className="navigation-logo-container clearfix">
+      <figure className="logo-container-main ">
         <img className="logo-img" src={window.images.logoBlue} />
         <div className="logo-text">
           <h1 className="logo-line-1-main">Remember</h1>
@@ -14,12 +14,14 @@ const Navigation = props => (
       </figure>
     </div>
 
-    <div className="tasks-filter-container">
-      <Filters />
-    </div>
+    <div className="lists">
+      <div className="tasks-filter-container">
+        <Filters />
+      </div>
 
-    <div className="lists-index">
-      <ListIndexContainer />
+      <div className="lists-index">
+        <ListIndexContainer />
+      </div>
     </div>
 
 

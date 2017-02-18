@@ -9,7 +9,9 @@ const Main = props => (
   <div className="main-container">
     <SearchbarContainer />
     <Navigation />
-    { props.children }
+    <div className="content-view clearfix">
+      { props.children }
+    </div>
   </div>
 );
 

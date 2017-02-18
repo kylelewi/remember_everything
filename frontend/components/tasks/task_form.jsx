@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 class TaskForm extends React.Component {
   constructor(props) {
     super(props);
@@ -8,6 +9,10 @@ class TaskForm extends React.Component {
   }
 
   componentDidMount() {
+    this.setState({list_id: this.props.params.listId});
+  }
+
+  componentWillReceiveProps() {
     this.setState({list_id: this.props.params.listId});
   }
 
@@ -22,46 +27,20 @@ class TaskForm extends React.Component {
     this.props.createTask(this.state);
   }
 
+
   render() {
     return (
-      <div>
-        <h3>Create a new task:</h3>
-        <form onSubmit={this.handleSubmit}>
-          <label>Task:
+      <div className="task-form">
+        <form className="task-form-element" onSubmit={this.handleSubmit}>
             <input
               type="text"
               value={this.state.name}
               onChange={this.update('name')} />
-          </label>
-
-          <label>Due Date:
-            <input
-              type="date"
-              value={this.state.due_date}
-              onChange={this.update('due_date')} />
-          </label>
-
-          <label>Time Estimate (in minutes):
-            <input
-              type="number"
-              value={this.state.estimate}
-              onChange={this.update('estimate')} />
-          </label>
-
-          <label>Notes
-            <textarea
-              value={this.state.notes}
-              onChange={this.update('notes')} />
-          </label>
-
-          <label>Completed?
-            <input
-              type="checkbox"
-              value={this.state.complete}
-              onChange={this.update('complete')} />
-          </label>
-
-          <input type="submit" value="Create new task" />
+            <div className="task-submit">
+              <div className="submit-container">
+                <input onSubmit={this.handleSubmit} type="submit" value="Add Task" />
+              </div>
+            </div>
         </form>
       </div>
     );

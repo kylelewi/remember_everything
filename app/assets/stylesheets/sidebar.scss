@@ -1,0 +1,55 @@
+.navigation-sidebar {
+  width: 180px;
+  height: 100%;
+  float: left;
+  background-color: #D7E7F5;
+  position: relative;
+}
+
+.navigation-sidebar {
+  ul {
+    list-style: none;
+  }
+  li {
+    padding: 0;
+  }
+}
+
+.navigation-logo-container {
+  width: 90%;
+  margin: 15px auto;
+}
+
+.lists {
+  width: 90%;
+  margin: 15px auto;
+  padding: 0 20px;
+  border-bottom: 1px solid #bfd9f1;
+  padding-bottom: 5px;
+  box-sizing: border-box;
+}
+
+.tasks-filter-container {
+  padding-bottom: 5px;
+  border-bottom: 1px solid #bfd9f1;
+}
+.lists-index {
+  padding-top: 5px;
+  border-bottom: 1px solid #bfd9f1;
+}
+  .lists-index h3, .lists-index label {
+    font-size: 12px;
+    line-height: 1;
+  }
+
+.navigation-sidebar a {
+  display: block;
+  font-size: 12px;
+  font-family: 'Roboto', sans-serif;
+  color: black;
+  padding-bottom: 5px;
+}
+
+.lists-index h3 {
+  font-size: 14px;
+}

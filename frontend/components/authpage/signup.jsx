@@ -20,6 +20,12 @@ class Signup extends React.Component{
     };
   }
 
+  redirectIfLoggedIn() {
+  		if (this.props.loggedIn) {
+  			this.props.router.push("/");
+  		}
+  	}
+
   handleSubmit(e) {
     e.preventDefault();
     this.props.signup(this.state).then(() => this.props.router.push("/main"));

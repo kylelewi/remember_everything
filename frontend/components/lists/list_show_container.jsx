@@ -19,7 +19,8 @@ const mapStateToProps = (state, ownProps) => {
   let tasksArray = Object.keys(state.tasks).map(id => state.tasks[id]);
   let filteredTasks = filterTasks(tasksArray, parseInt(ownProps.params.listId));
   return {
-    tasks: filteredTasks
+    tasks: filteredTasks,
+    listId: ownProps.params.listId
   };
   // if (isEmpty(state.tasks)) {
   //   return { tasks: [] };
