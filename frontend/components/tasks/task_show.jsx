@@ -46,32 +46,45 @@ class TaskShow extends React.Component {
           </Link>
         </div>
         <form className="task-show-form">
-          <input
-            type="text"
-            value={task.name}
-            onChange={this.update('name')} />
-          <input
-            type="date"
-            value={task.due_date ? task.due_date : ""}
-            onChange={this.update('due_date')} />
-          <select
-            value={currentList ? currentList.id : ""}
-            onChange={this.update('list_id')} >
-            <option value=""></option>
-            {
-              objectToArray(this.props.lists).map(list => (
-                <option
-                  value={list.id}
-                  key={list.id}>
-                  {list.name}
-                </option>
-              ))
-            }
-          </select>
-          <input
-            type="number"
-            value={task.estimate}
-            onChange={this.update('estimate')} />
+          <div className="task-show-heading">
+            <div className="mini-line"></div>
+            <input
+              type="text"
+              value={task.name}
+              onChange={this.update('name')} />
+            <div className="icons-wrapper">
+              <i className="fa fa-info" aria-hidden="true"></i>
+              <i className="fa fa-print" aria-hidden="true"></i>
+            </div>
+          </div>
+
+          <div className="other-fields">
+            <div className="due-date-wrapper">
+              <label>due</label>
+              <input
+                type="date"
+                value={task.due_date ? task.due_date : ""}
+                onChange={this.update('due_date')} />
+            </div>
+            <select
+              value={currentList ? currentList.id : ""}
+              onChange={this.update('list_id')} >
+              <option value=""></option>
+              {
+                objectToArray(this.props.lists).map(list => (
+                  <option
+                    value={list.id}
+                    key={list.id}>
+                    {list.name}
+                  </option>
+                ))
+              }
+            </select>
+            <input
+              type="number"
+              value={task.estimate}
+              onChange={this.update('estimate')} />
+          </div>
         </form>
       </div>
     );

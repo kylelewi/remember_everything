@@ -3,15 +3,60 @@
 .task-show-container {
   background-color: white;
   position: relative;
-  padding: 5px;
+  padding: 10px 10px 5px 15px;
   border-left: 2px solid $light-grey;
   border-radius: 8px;
   .close {
     text-align: right;
     font-size: 12px;
+    margin: 4px 3px 0 0;
     a {
       text-decoration: none;
       color: $grey;
+    }
+  }
+  input {
+    display: block;
+    border: none;
+  }
+  .task-show-heading {
+    height: 22px;
+    .mini-line {
+      float: left;
+    }
+    input {
+      float: left;
+      font-size: 18px;
+      width: 70%;
+    }
+    .icons-wrapper {
+      width: 20%;
+      height: 100%;
+      float: right;
+      text-align: right;
+      i {
+        color: $grey;
+        font-size: 12px;
+        padding-left: 10px;
+      }
+    }
+  }
+  .other-fields {
+    width: 100%;
+    padding-left: 35px;
+    div {
+      margin-top: 15px;
+      label, input {
+        float: left;
+        font-size: 13px;
+      }
+      label {
+        color: $grey;
+        width: 62px;
+      }
+      input {
+        
+      }
     }
   }
 }
