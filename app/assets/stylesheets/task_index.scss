@@ -83,6 +83,10 @@
   #caret {
     font-size: 10px;
     margin-left: -7px;
+    padding-left: 1px;
+  }
+  #checkmark {
+    font-size: 16px;
   }
   a {
     font-size: 12px;
@@ -103,16 +107,24 @@
 
 .action-buttons {
   margin: 5px 15px;
-  .checkbox-wrapper {
+  .action-button-wrapper {
+    width: 30px;
     display: inline-block;
     padding: 0 5px;
     border: 1px solid $light-grey;
     border-radius: 3px;
+    text-align: center;
     i {
-      font-size: 10px;
-      color: $grey;
+      font-size: 14px;
+      color: rgb(100, 100, 100);
       margin-left: 2px;
       height: 100%;
     }
+    #caret {
+      font-size: 10px;
+    }
+  }
+  .checkbox-wrapper, .check-wrapper {
+    margin-right: 8px;
   }
 }

@@ -35,7 +35,8 @@ class TaskForm extends React.Component {
             <input
               type="text"
               value={this.state.name}
-              onChange={this.update('name')} />
+              onChange={this.update('name')}
+              placeholder="Add a task..." />
             <div className="task-submit">
               <div className="submit-container">
                 <input onSubmit={this.handleSubmit} type="submit" value="Add Task" />

@@ -32,10 +32,30 @@ class TaskIndex extends React.Component {
             <div className="task-filter-dropdown">
 
             </div>
-            <div className="checkbox-wrapper">
+            <div className="action-button-wrapper checkbox-wrapper">
               <input type="checkbox"></input>
               <a className="checkbox-dropdown" href="#">
                 <i id="caret" className="fa fa-caret-down" aria-hidden="true"></i>
+              </a>
+            </div>
+            <div className="action-button-wrapper check-wrapper">
+              <a href="#">
+                <i id="checkmark" className="fa fa-check" aria-hidden="true"></i>
+              </a>
+            </div>
+            <div className="action-button-wrapper">
+              <a href="#">
+                <i className="fa fa-calendar" aria-hidden="true"></i>
+              </a>
+            </div>
+            <div className="action-button-wrapper list-wrapper">
+              <a href="#">
+                <i className="fa fa-list" aria-hidden="true"></i>
+              </a>
+            </div>
+            <div className="action-button-wrapper">
+              <a href="#">
+                <i className="fa fa-trash-o" aria-hidden="true"></i>
               </a>
             </div>
           </div>
