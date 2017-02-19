@@ -2,6 +2,7 @@ import React from 'react';
 import TaskIndexItem from './task_index_item';
 import TaskFormContainer from './task_form_container';
 import { Link } from 'react-router';
+import * as Selectors from '../../util/selectors';
 
 class TaskIndex extends React.Component {
   componentDidMount() {
@@ -9,6 +10,11 @@ class TaskIndex extends React.Component {
   }
 
   render() {
+    let thisList;
+    if (this.props.lists) {
+      thisList = this.props.lists[this.props.params.listId];
+    }
+
     return (
       <div className="task-index">
         <div className="task-index-list">
@@ -52,9 +58,39 @@ class TaskIndex extends React.Component {
           </ul>
         </div>
         <div className="task-index-summary">
-        { this.props.children }
-
+          <div>
+            <div className="index-summary-title">
+              <h2>{ thisList ? `${thisList.name}` : "All Tasks" }</h2>
+            </div>
+            <div className="index-summary-badges">
+              <div className="badge current-tasks">
+                <div className="task-count">
+                  <h3>{ Selectors.countTasks(this.props.tasks) }</h3>
+                  <figcaption>tasks</figcaption>
+                </div>
+                <div className="total-time">
+                  <h3>{ Selectors.sumEstimates(this.props.tasks) }<span>mins</span></h3>
+                  <figcaption>estimated</figcaption>
+                </div>
+              </div>
+              <div className="badge due-today">
+                <h3>{ Selectors.dueToday(this.props.tasks) }</h3>
+                <figcaption>due today</figcaption>
+              </div>
+              <div className="badge overdue">
+                <h3>{ Selectors.tasksOverdue(this.props.tasks) }</h3>
+                <figcaption>overdue</figcaption>
+              </div>
+              <div className="badge completed-badge">
+                <h3>{ Selectors.tasksCompleted(this.props.tasks) }</h3>
+                <figcaption>completed</figcaption>
+              </div>
+            </div>
+          </div>
+          { this.props.children }
         </div>
+
+
       </div>
     );
   }
