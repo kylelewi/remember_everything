@@ -93,6 +93,9 @@ class Signup extends React.Component{
 
           <input type="submit" value="Submit" />
         </form>
+        <br />
+        <p>Already have an account?</p>
+        <Link to={"/login"}>Login instead...</Link>
       </div>
     )
   }

@@ -21,12 +21,14 @@
 }
 
 .lists {
-  width: 90%;
+  width: 100%;
   margin: 15px auto;
-  padding: 0 20px;
   border-bottom: 1px solid #bfd9f1;
   padding-bottom: 5px;
   box-sizing: border-box;
+  a, .list-row, p {
+    padding: 0 20px 0 5px;
+  }
 }
 
 .tasks-filter-container {

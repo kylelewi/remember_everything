@@ -9,6 +9,7 @@ class TaskIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.toggleCheckbox = this.toggleCheckbox.bind(this);
   }
 
   componentDidMount() {
@@ -18,6 +19,15 @@ class TaskIndex extends React.Component {
   componentWillReceiveProps(newProps) {
     if (newProps.tasks.length > 0) {
       this.setState(tasksSelectedStatus(newProps.tasks));
+    }
+  }
+
+  toggleCheckbox(task) {
+    let checkedStatus = this.state[task.id];
+    if (checkedStatus) {
+      this.setState({[task.id]: false});
+    } else {
+      this.setState({[task.id]: true});
     }
   }
 
@@ -85,7 +95,8 @@ class TaskIndex extends React.Component {
                   task={task}
                   listId={this.props.listId}
                   allTasks={this.props.tasks}
-                  checked={this.state[task.id]} />
+                  checked={this.state[task.id]}
+                  toggleCheckbox={this.toggleCheckbox} />
               ))
             }
           </ul>

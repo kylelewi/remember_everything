@@ -6,12 +6,25 @@
   box-sizing: border-box;
   border: 1px solid $border-grey;
   outline: none;
+  position: relative;
+  .close-modal {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: $medium-grey;
+    font-size: 18px;
+    cursor: pointer;
+  }
   input[type="text"] {
     display: block;
     padding: 5px 6px;
     border: 1px solid $border-grey;
     width: 90%;
     margin-top: 5px;
+    outline: none;
+  }
+  input[type="text"]:focus {
+    border: 1px solid $bright-blue;
   }
   p {
     font-size: 11px;
@@ -26,14 +39,21 @@
     border:none;
     font-weight: bold;
     font-size: 13px;
+    cursor: pointer;
   }
   input[type="submit"] {
     background-color: $bright-blue;
     color: white;
   }
+  input[type="submit"]:hover {
+    box-shadow: 1px 1px 1px $medium-grey;
+  }
   .modal-cancel {
     background-color: $offwhite;
     margin-left: 10px;
     border: 1px solid $medium-grey;
+  }
+  .modal-cancel:hover {
+    color: $bright-blue;
   }
 }

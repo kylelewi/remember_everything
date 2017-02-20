@@ -1,7 +1,12 @@
 import { RECEIVE_TASKS, RECEIVE_TASK } from '../actions/task_actions';
 import merge from 'lodash/merge';
 
-const TasksReducer = (state = {}, action) => {
+const initialState = {
+  tasks: {},
+  selectedTasks: []
+};
+
+const TasksReducer = (state = initialState, action) => {
   Object.freeze(state);
   let newState = merge({}, state);
 

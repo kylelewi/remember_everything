@@ -45,14 +45,20 @@ class ListForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <h3>Add a list</h3>
-        <button onClick={this.openModal.bind(this)}>Open Modal</button>
+      <div className="lists-div">
+        <div className="list-row clearfix" onClick={this.openModal.bind(this)}>
+          <p>Lists</p>
+          <i className="icon-border fa fa-plus" aria-hidden="true"></i>
+        </div>
         <Modal className="list-modal"
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal.bind(this)}
           style={customStyles}
           contentLabel="Add New List" >
+          <i
+            className="close-modal fa fa-times"
+            aria-hidden="true"
+            onClick={this.closeModal.bind(this)}></i>
           <form onSubmit={this.handleSubmit}>
             <label>Add a list
               <p>Please enter a new list name:</p>

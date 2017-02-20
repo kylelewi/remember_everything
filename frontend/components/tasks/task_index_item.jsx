@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link, hashHistory } from 'react-router';
 
-const TaskIndexItem = ({ task, router, listId, checked }) => {
-
+const TaskIndexItem = ({ task, router, listId, checked, toggleCheckbox }) => {
   function setPathname(router) {
     let path;
     if (router.location.pathname.includes("list")) {
@@ -15,13 +14,18 @@ const TaskIndexItem = ({ task, router, listId, checked }) => {
   }
 
   return (
-    <Link to={setPathname(router)}>
-      <li>
-        <div className="mini-line"></div>
-        <input type="checkbox" />
-        {task.name}
-      </li>
-  </Link>
+    <div>
+      <Link to={setPathname(router)}>
+        <li>
+          <div className="mini-line"></div>
+          <input type="checkbox"
+            onChange={() => toggleCheckbox(task)}
+            checked={checked} />
+          {task.name}
+        </li>
+      </Link>
+    </div>
+
   );
 }
 
