@@ -27,6 +27,11 @@ class Api::TasksController < ApplicationController
     end
   end
 
+  def filter
+    @tasks = Task.where("lower(name) LIKE ?", "#{params[:filter_term].downcase}%")
+    render :index;
+  end
+
   private
   def task_params
     params.require(:task)

@@ -3,10 +3,22 @@ import TaskIndexItem from './task_index_item';
 import TaskFormContainer from './task_form_container';
 import { Link } from 'react-router';
 import * as Selectors from '../../util/selectors';
+import {tasksSelectedStatus} from '../../util/helper';
 
 class TaskIndex extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
   componentDidMount() {
     this.props.fetchTasks();
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.tasks.length > 0) {
+      this.setState(tasksSelectedStatus(newProps.tasks));
+    }
   }
 
   render() {
@@ -72,7 +84,8 @@ class TaskIndex extends React.Component {
                   router={this.props.router}
                   task={task}
                   listId={this.props.listId}
-                  allTasks={this.props.tasks} />
+                  allTasks={this.props.tasks}
+                  checked={this.state[task.id]} />
               ))
             }
           </ul>

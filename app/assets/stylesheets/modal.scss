@@ -1,0 +1,39 @@
+@import 'global';
+
+.list-modal {
+  padding: 2.5%;
+  background-color: white;
+  box-sizing: border-box;
+  border: 1px solid $border-grey;
+  outline: none;
+  input[type="text"] {
+    display: block;
+    padding: 5px 6px;
+    border: 1px solid $border-grey;
+    width: 90%;
+    margin-top: 5px;
+  }
+  p {
+    font-size: 11px;
+    margin-top: 20px;
+  }
+  .buttons {
+    margin-top: 20px;
+  }
+  .button {
+    padding: 6px 16px;
+    border-radius: 3px;
+    border:none;
+    font-weight: bold;
+    font-size: 13px;
+  }
+  input[type="submit"] {
+    background-color: $bright-blue;
+    color: white;
+  }
+  .modal-cancel {
+    background-color: $offwhite;
+    margin-left: 10px;
+    border: 1px solid $medium-grey;
+  }
+}

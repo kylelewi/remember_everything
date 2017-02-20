@@ -2,23 +2,48 @@ import React from 'react';
 import { Link, withRouter } from 'react-router';
 
 
-const Searchbar = props => {
-  function handleLogout() {
-    props.logout().then(() => props.router.push("/"));
+class Searchbar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { searchText: "" };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
-  return (
-    <div className="searchbar clearfix">
-      <div className="search-field-container">
-        <input className="search-field" type="text" />
+  handleLogout() {
+    this.props.logout().then(() => this.props.router.push("/"));
+  }
+
+  update(field) {
+    return (e) => {
+      this.setState({[field]: e.target.value});
+    };
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.filterTasks(this.state.searchText);
+  }
+
+  render() {
+    return (
+      <div className="searchbar clearfix">
+        <form
+          onSubmit={this.handleSubmit}
+          className="search-field-container" >
+          <input
+            className="search-field"
+            type="text"
+            onChange={this.update('searchText')} />
+        </form>
+        <navbar className="main-navbar">
+          <Link to={"/"}>Terms of Use</Link>
+          <Link to={"/"}>Contact</Link>
+          <button onClick={this.handleLogout}>Log out</button>
+        </navbar>
       </div>
-      <navbar className="main-navbar">
-        <Link to={"/"}>Terms of Use</Link>
-        <Link to={"/"}>Contact</Link>
-        <button onClick={handleLogout}>Log out</button>
-      </navbar>
-    </div>
-  );
+    );
+  };
 }
 
 export default withRouter(Searchbar);

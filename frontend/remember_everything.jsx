@@ -7,6 +7,10 @@ import { fetchTasks, fetchTask, createTask } from './actions/task_actions';
 
 import { fetchLists, createList } from './actions/list_actions';
 
+import {filterTasks} from './util/task_api_util';
+
+window.filterTasks= filterTasks;
+
 window.login = login;
 window.signup = signup;
 window.logout = logout;

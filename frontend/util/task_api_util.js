@@ -28,9 +28,10 @@ export const updateTask = task => (
   })
 );
 
-export const filterTask = filterTerm => (
+export const filterTasks = filterTerm => (
   $.ajax({
     method: "GET",
-    url: `api/tasks/${filterTerm}`
+    url: `api/tasks/filter/${filterTerm}`,
+    data: { filterTerm }
   })
 );

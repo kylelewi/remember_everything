@@ -23,6 +23,11 @@ export const updateTask = task => dispatch => (
     .then(task => dispatch(receiveTask(task)))
 );
 
+export const filterTasks = filterTerm => dispatch => (
+  APIUtil.filterTasks(filterTerm)
+    .then(tasks => dispatch(receiveTasks(tasks)))
+);
+
 export const receiveTasks = tasks => ({
   type: RECEIVE_TASKS,
   tasks

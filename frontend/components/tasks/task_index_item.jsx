@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, hashHistory } from 'react-router';
 
-const TaskIndexItem = ({ task, router, listId }) => {
+const TaskIndexItem = ({ task, router, listId, checked }) => {
 
   function setPathname(router) {
     let path;
