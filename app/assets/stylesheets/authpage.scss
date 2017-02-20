@@ -1,6 +1,9 @@
+@import 'global';
+
 .authpage {
   width: 100%;
   height: 100%;
+  background-color: $deep-blue;
 }
 
 .authpage-left {
@@ -13,11 +16,18 @@
 .authpage-right {
   width: 50%;
   height: 100%;
-  float: left;
+  float: right;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  animation: authform 1s forwards;
+  background-color: white;
+  overflow: hidden;
+}
+@keyframes authform {
+  0% { width: 0; }
+  100% { width: 50% }
 }
 
 .authpage-logo {
@@ -39,11 +49,11 @@
 
 .signup-form {
   font-family: 'Nunito', sans-serif;
-  width: 40%;
+  width: 390px;
 }
 .login-form {
   font-family: 'Nunito', sans-serif;
-  width: 40%;
+  width: 390px;
 }
 .authpage-right form label, .authpage-right form input {
   display: block;
