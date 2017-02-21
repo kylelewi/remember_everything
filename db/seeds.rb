@@ -2,7 +2,7 @@ User.destroy_all
 List.destroy_all
 Task.destroy_all
 
-user1 = User.create(firstname: "Robin", lastname: "Hood", email: "robin@merrymen.org", username: "robin", password: "password")
+user1 = User.create(firstname: "Robin", lastname: "Hood", email: "robin@merrymen.org", username: "robinhood", password: "password")
 user2 = User.create(firstname: "Little", lastname: "John", email: "john@merrymen.org", username: "john", password: "password")
 user3 = User.create(firstname: "Maid", lastname: "Marian", email: "marian@merrymen.org", username: "marian", password: "password")
 
