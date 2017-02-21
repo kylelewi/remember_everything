@@ -2,7 +2,9 @@ import React from 'react';
 import Landing from './landing';
 import Session from './session';
 import { Link } from 'react-router';
-import { login } from '../util/session_api_util';
+import { login } from '../actions/session_actions';
+import { connect } from 'react-redux';
+
 
 
 // const Home = props => (
@@ -14,7 +16,8 @@ import { login } from '../util/session_api_util';
 
     loginGuest(e) {
       e.preventDefault();
-      login({username: "robinhood", password: "password"});
+      this.props.login({username: "robinhood", password: "password"})
+        .then(() => this.props.router.push("/main"));
     }
 
     render() {
@@ -48,4 +51,9 @@ import { login } from '../util/session_api_util';
 
 }
 
-export default Home;
+
+function mapDispatchToProps(dispatch) {
+  return { login: (user) => dispatch(login(user)) };
+}
+
+export default connect(null, mapDispatchToProps)(Home);

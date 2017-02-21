@@ -6,15 +6,18 @@ class TaskShow extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = { name: "", due_date: "", list_id: "", estimate: "" }
   }
 
   componentDidMount() {
-    this.props.fetchTask(this.props.params.taskId);
-    this.setState(this.props.task);
+    this.props.fetchTask(this.props.params.taskId)
+      .then(() => this.setState(this.props.task));
   }
 
   componentWillReceiveProps(newProps) {
-    this.setState(newProps.task);
+    if (this.props.params !== newProps.params){
+      this.setState(newProps.task);
+    }
   }
 
   componentWillUnmount() {

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, hashHistory } from 'react-router';
 
 const TaskIndexItem = ({ task, router, listId, checked, toggleCheckbox }) => {
-  function setPathname(router) {
+  function setPathname() {
     let path;
     if (router.location.pathname.includes("list")) {
       path = `/main/lists/${listId}/tasks/${task.id}`;
@@ -13,16 +13,20 @@ const TaskIndexItem = ({ task, router, listId, checked, toggleCheckbox }) => {
     return path;
   }
 
+  function handleRedirect() {
+    toggleCheckbox(task);
+    router.push(setPathname());
+  }
+
   return (
     <div>
-      <Link to={setPathname(router)}>
+      <Link onClick={() => toggleCheckbox(task)} to={setPathname(router)}>
         <li>
           <div className="mini-line"></div>
           <input type="checkbox"
-            onChange={() => toggleCheckbox(task)}
-            checked={checked} />
+            defaultChecked={checked} />
           {task.name}
-        </li>
+          </li>
       </Link>
     </div>
 

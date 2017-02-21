@@ -4,7 +4,7 @@ import { fetchTask, updateTask } from '../../actions/task_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    task: state.tasks[ownProps.params.taskId],
+    task: state.tasks.tasks[ownProps.params.taskId],
     lists: state.lists
   };
 };

@@ -1,21 +1,26 @@
-import { RECEIVE_TASKS, RECEIVE_TASK } from '../actions/task_actions';
+import { RECEIVE_TASKS, RECEIVE_TASK, RECEIVE_CHECK } from '../actions/task_actions';
 import merge from 'lodash/merge';
 
 const initialState = {
   tasks: {},
-  selectedTasks: []
+  checkedTasks: {}
 };
 
 const TasksReducer = (state = initialState, action) => {
   Object.freeze(state);
   let newState = merge({}, state);
+  let newTasks;
 
   switch (action.type) {
     case RECEIVE_TASKS:
-      return action.tasks;
+      newTasks = merge({}, state.tasks, action.tasks);
+      return { tasks: newTasks, checkedTasks: {} };
     case RECEIVE_TASK:
-      const newTask = {[action.task.id]: action.task};
-      return merge({}, state, newTask);
+      newTasks = merge({}, state.tasks, {[action.task.id]: action.task});
+      return merge({}, state, {tasks: newTasks });
+    case RECEIVE_CHECK:
+      const newChecks = merge({}, state.checkedTasks, { [action.task.id]: !state.checkedTasks[action.task.id] });
+      return { tasks: state.tasks, checkedTasks: newChecks };
     default:
       return state;
   }

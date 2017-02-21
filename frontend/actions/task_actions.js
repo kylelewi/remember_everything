@@ -2,6 +2,7 @@ import * as APIUtil from '../util/task_api_util';
 
 export const RECEIVE_TASKS = "RECEIVE_TASKS";
 export const RECEIVE_TASK = "RECEIVE_TASK";
+export const RECEIVE_CHECK = "RECEIVE_CHECK";
 
 export const fetchTasks = () => dispatch => (
   APIUtil.fetchTasks()
@@ -35,5 +36,10 @@ export const receiveTasks = tasks => ({
 
 export const receiveTask = task => ({
   type: RECEIVE_TASK,
+  task
+});
+
+export const receiveCheck = task => ({
+  type: RECEIVE_CHECK,
   task
 });

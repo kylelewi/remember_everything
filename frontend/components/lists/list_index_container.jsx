@@ -3,7 +3,8 @@ import ListIndex from './list_index';
 import { fetchLists, createList } from '../../actions/list_actions';
 
 const mapStateToProps = state => ({
-  lists: Object.keys(state.lists).map(id => state.lists[id])
+  lists: Object.keys(state.lists).map(id => state.lists[id]),
+  tasks: Object.values(state.tasks.tasks)
 });
 
 const mapDispatchToProps = dispatch => ({
