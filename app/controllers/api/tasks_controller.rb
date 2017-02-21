@@ -28,8 +28,26 @@ class Api::TasksController < ApplicationController
   end
 
   def filter
-    @tasks = Task.where("lower(name) LIKE ?", "#{params[:filter_term].downcase}%")
-    render :index;
+    if params[:filter_term] == ""
+      @tasks = current_user.tasks
+    else
+      @tasks = current_user.tasks.where("lower(name) LIKE ?", "#{params[:filter_term].downcase}%")
+      render :index;
+    end
+  end
+
+  def bulk_update_complete
+    tasks = Task.where(id: params[:checks])
+    tasks.update_all(complete: true)
+    @tasks = current_user.tasks
+    render :index
+  end
+
+  def bulk_update_due_date
+    tasks = Task.where(id: params[:checks])
+    tasks.update_all(due_date: params[:date])
+    @tasks = current_user.tasks
+    render :index
   end
 
   private

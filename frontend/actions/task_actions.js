@@ -5,6 +5,7 @@ export const RECEIVE_TASK = "RECEIVE_TASK";
 export const RECEIVE_CHECK = "RECEIVE_CHECK";
 export const RECEIVE_CHECKS = "RECEIVE_CHECKS";
 export const CLEAR_CHECKS = "CLEAR_CHECKS";
+export const UPDATE_CHECKS = "UPDATE_CHECKS";
 
 export const fetchTasks = () => dispatch => (
   APIUtil.fetchTasks()
@@ -28,6 +29,16 @@ export const updateTask = task => dispatch => (
 
 export const filterTasks = filterTerm => dispatch => (
   APIUtil.filterTasks(filterTerm)
+    .then(tasks => dispatch(receiveTasks(tasks)))
+);
+
+export const updateChecks = checks => dispatch => (
+  APIUtil.updateChecks(checks)
+    .then(tasks => dispatch(receiveTasks(tasks)))
+);
+
+export const updateDate = (checks, date) => dispatch => (
+  APIUtil.updateChecks(checks, date)
     .then(tasks => dispatch(receiveTasks(tasks)))
 );
 

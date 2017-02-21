@@ -31,7 +31,22 @@ export const updateTask = task => (
 export const filterTasks = filterTerm => (
   $.ajax({
     method: "GET",
-    url: `api/tasks/filter/${filterTerm}`,
-    data: { filterTerm }
+    url: `api/filter/${filterTerm}`
+  })
+);
+
+export const updateChecks = checks => (
+  $.ajax({
+    method: "PATCH",
+    url: `api/tasks/complete`,
+    data: { checks }
+  })
+);
+
+export const updateDate = (checks, date) => (
+  $.ajax({
+    method: "PATCH",
+    url: `api/tasks/date`,
+    data: { checks, date }
   })
 );

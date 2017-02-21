@@ -10,6 +10,7 @@ class TaskIndex extends React.Component {
     super(props);
     this.state = {};
     this.toggleCheckbox = this.toggleCheckbox.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
   }
 
   componentDidMount() {
@@ -23,6 +24,16 @@ class TaskIndex extends React.Component {
 
   countChecks() {
     return Object.keys(this.props.checked).filter(id => this.props.checked[id] === true).length;
+  }
+
+  handleUpdate() {
+    const checks = Object.keys(this.props.checked);
+    this.props.updateChecks(checks);
+  }
+
+  handleDateUpdate(date) {
+    const checks = Object.keys(this.props.checked);
+    this.props.updateDate(checks, date);
   }
 
   render() {
@@ -48,13 +59,13 @@ class TaskIndex extends React.Component {
             <div className="task-filter-dropdown">
 
             </div>
-            <div className="action-button-wrapper checkbox-wrapper">
+            <div onClick={this.props.updateChecks} className="action-button-wrapper checkbox-wrapper">
               <input type="checkbox"></input>
               <a className="checkbox-dropdown" href="#">
                 <i id="caret" className="fa fa-caret-down" aria-hidden="true"></i>
               </a>
             </div>
-            <div className="action-button-wrapper check-wrapper">
+            <div onClick={this.handleUpdate} className="action-button-wrapper check-wrapper">
               <a href="#">
                 <i id="checkmark" className="fa fa-check" aria-hidden="true"></i>
               </a>
