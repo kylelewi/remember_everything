@@ -1,4 +1,4 @@
-import { RECEIVE_TASKS, RECEIVE_TASK, RECEIVE_CHECK } from '../actions/task_actions';
+import { RECEIVE_TASKS, RECEIVE_TASK, RECEIVE_CHECK, RECEIVE_CHECKS, CLEAR_CHECKS } from '../actions/task_actions';
 import merge from 'lodash/merge';
 
 const initialState = {
@@ -13,7 +13,6 @@ const TasksReducer = (state = initialState, action) => {
 
   switch (action.type) {
     case RECEIVE_TASKS:
-      // newTasks = merge({}, state.tasks, action.tasks);
       return { tasks: action.tasks, checkedTasks: {} };
     case RECEIVE_TASK:
       newTasks = merge({}, state.tasks, {[action.task.id]: action.task});
@@ -21,6 +20,11 @@ const TasksReducer = (state = initialState, action) => {
     case RECEIVE_CHECK:
       const newChecks = merge({}, state.checkedTasks, { [action.task.id]: !state.checkedTasks[action.task.id] });
       return { tasks: state.tasks, checkedTasks: newChecks };
+    case RECEIVE_CHECKS:
+      newTasks = merge({}, state.tasks, action.tasks);
+      return { tasks: newTasks, checkedTasks: state.checkedTasks };
+    case CLEAR_CHECKS:
+      return { tasks: state.tasks, checkedTasks: {} };
     default:
       return state;
   }

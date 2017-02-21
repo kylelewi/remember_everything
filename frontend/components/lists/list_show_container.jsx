@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import TaskIndex from '../tasks/task_index';
-import { fetchTasks, createTask } from '../../actions/task_actions';
+import { fetchTasks, createTask, receiveCheck, clearChecks } from '../../actions/task_actions';
 
 function filterTasks(tasks, listId) {
   return tasks.filter(task => task.list_id === listId);
@@ -16,10 +16,11 @@ function isEmpty(object) {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  let tasksArray = Object.keys(state.tasks).map(id => state.tasks[id]);
+  let tasksArray = Object.keys(state.tasks.tasks).map(id => state.tasks.tasks[id]);
   let filteredTasks = filterTasks(tasksArray, parseInt(ownProps.params.listId));
   return {
     tasks: filteredTasks,
+    checked: state.tasks.checkedTasks,
     listId: ownProps.params.listId,
     lists: state.lists
   };
@@ -32,7 +33,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   fetchTasks: () => dispatch(fetchTasks(ownProps.params.listId)),
-  createTask: task => dispatch(createTask(task))
+  createTask: task => dispatch(createTask(task)),
+  checkTask: task => dispatch(receiveCheck(task)),
+  clearChecks: () => dispatch(clearChecks())
 });
 
 export default connect(

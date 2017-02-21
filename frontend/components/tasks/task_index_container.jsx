@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import TaskIndex from './task_index';
-import { fetchTasks, createTask, receiveCheck } from '../../actions/task_actions';
+import { fetchTasks, createTask, receiveCheck, clearChecks } from '../../actions/task_actions';
 
 const mapStateToProps = state => ({
   tasks: Object.keys(state.tasks.tasks).map(id => state.tasks.tasks[id]),
@@ -10,7 +10,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   fetchTasks: () => dispatch(fetchTasks()),
   createTask: task => dispatch(createTask(task)),
-  checkTask: task => dispatch(receiveCheck(task))
+  checkTask: task => dispatch(receiveCheck(task)),
+  clearChecks: () => dispatch(clearChecks())
 });
 
 export default connect(

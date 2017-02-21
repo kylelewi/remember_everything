@@ -16,20 +16,13 @@ class TaskIndex extends React.Component {
     this.props.fetchTasks();
   }
 
-  // componentWillReceiveProps(newProps) {
-  //   if (newProps.tasks.length > 0) {
-  //     this.setState(tasksSelectedStatus(newProps.tasks));
-  //   }
-  // }
 
   toggleCheckbox(task) {
     this.props.checkTask(task);
-    // let checkedStatus = this.state[task.id];
-    // if (checkedStatus) {
-    //   this.setState({[task.id]: false});
-    // } else {
-    //   this.setState({[task.id]: true});
-    // }
+  }
+
+  countChecks() {
+    return Object.keys(this.props.checked).filter(id => this.props.checked[id] === true).length;
   }
 
   render() {
@@ -92,17 +85,23 @@ class TaskIndex extends React.Component {
               this.props.tasks.map(task => (
                 <TaskIndexItem
                   key={task.id}
+                  checkedCount={this.countChecks()}
                   router={this.props.router}
                   task={task}
                   listId={this.props.listId}
                   allTasks={this.props.tasks}
                   checked={this.props.checked[task.id]}
-                  toggleCheckbox={this.toggleCheckbox} />
+                  toggleCheckbox={this.toggleCheckbox}
+                  clearChecks={this.props.clearChecks} />
               ))
             }
           </ul>
         </div>
         <div className="task-index-summary">
+          <div className="multiple-tasks">
+            <h3>{ this.countChecks() } tasks selected</h3>
+            <div onClick={this.props.clearChecks} className="clear-selection">clear selection</div>
+          </div>
           <div>
             <div className="index-summary-title">
               <h2>{ thisList ? `${thisList.name}` : "All Tasks" }</h2>

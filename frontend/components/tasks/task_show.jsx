@@ -25,16 +25,6 @@ class TaskShow extends React.Component {
     taskShow.classList.add(".slide-out");
   }
 
-  complete() {
-    let completeText;
-    if (this.props.task.complete) {
-      completeText="Nice job!";
-    } else {
-      completeText="Not done yet";
-    }
-    return completeText;
-  }
-
   update(field) {
     return e => {
       this.setState({[field]: e.target.value});

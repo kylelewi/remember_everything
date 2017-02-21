@@ -2,23 +2,37 @@
 
 .tasks-list-ul {
   margin-top: 5px;
+  li {
+    height: 30px;
+    font-size: 12px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    border-top: 1px dotted $light-grey;
+    }
+  li:hover {
+    background-color: $light-yellow;
+  }
+  .checkbox-wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  input {
+    margin-right: 5px;
+    padding: 5px 0;
+    cursor: pointer;
+  }
+  .task-item-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
   a {
     color: black;
-    li {
-      height: 30px;
-      font-size: 12px;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      padding-left: 15px;
-      border-top: 1px dotted $light-grey;
-      }
-    li:hover {
-      background-color: $light-yellow;
-    }
-    input {
-      margin-right: 5px;
-    }
   }
 }
 
