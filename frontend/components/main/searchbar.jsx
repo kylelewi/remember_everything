@@ -35,6 +35,7 @@ class Searchbar extends React.Component {
             className="search-field"
             type="text"
             onChange={this.update('searchText')} />
+          <i className="fa fa-search" aria-hidden="true"></i>
         </form>
         <navbar className="main-navbar">
           <Link to={"/"}>Terms of Use</Link>
