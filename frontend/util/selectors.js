@@ -4,10 +4,63 @@ export const objectToArray = (object) => {
   return Object.keys(object).map(id => object[id]);
 };
 
+export const convertDueDate = (task) => {
+  return new Date(task.due_date).getTime() + 18000000;
+};
+
+export const incompleteTasks = (tasks) => {
+  const tasksArray = objectToArray(tasks);
+  return tasksArray.filter(task => task.complete === false);
+};
+
+export const completedTasks = (tasks) => {
+  const tasksArray = objectToArray(tasks);
+  return tasksArray.filter(task => task.complete === true);
+};
+
+export const tasksDueToday = (tasks) => {
+  var today = new Date();
+  var dateToday = new Date(today.getFullYear() , today.getMonth(), today.getDate()).getTime();
+  const tasksArray = objectToArray(tasks);
+
+  return tasksArray.filter(task => dateToday === convertDueDate(task));
+};
+
+export const tasksDueTomorrow = (tasks) => {
+  var today = new Date();
+  var dateToday = new Date(today.getFullYear() , today.getMonth(), today.getDate()).getTime();
+  var dateTomorrow = dateToday + 86400000;
+  const tasksArray = objectToArray(tasks);
+
+  return tasksArray.filter(task => dateTomorrow === convertDueDate(task));
+};
+
+export const tasksDueThisWeek = (tasks) => {
+  var today = new Date();
+  var dateToday = new Date(today.getFullYear() , today.getMonth(), today.getDate()).getTime();
+  var dateNextWeek = dateToday + 604800000;
+  const tasksArray = objectToArray(tasks);
+
+  const filteredTasks = tasksArray.filter(task => (
+    (convertDueDate(task) >= dateToday) && (convertDueDate(task) <= dateNextWeek)
+  ));
+  return filteredTasks;
+};
+
+
+
+
+
+
+
+
+
+
 export const countTasks = (tasks) => {
   const tasksArray = Object.keys(tasks).map(id => tasks[id]);
   return tasksArray.length;
 };
+
 
 export const sumEstimates = (tasks) => {
   const tasksArray = Object.keys(tasks).map(id => tasks[id]);
@@ -81,3 +134,9 @@ export const tasksCompleted = (tasks) => {
 
   return count;
 };
+
+// export const dueThisWeek = (tasks) => {
+//   const tasksArray = Object.keys.map(id => tasks[id]);
+//   let count = 0;
+//   tasksArray.forEach(task =>
+// }

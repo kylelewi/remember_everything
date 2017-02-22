@@ -162,3 +162,63 @@
   margin-left: 23px;
   cursor: pointer;
 }
+
+.date-button {
+  position: relative;
+}
+.list-wrapper {
+  position: relative;
+}
+
+.dropdown-pane {
+  background-color: white;
+  position: absolute;
+  left: 0;
+  top: 23px;
+  width: 140px;
+  box-shadow: 0 1px 4px 1px rgba(0,0,0,0.2);
+  border-radius: 3px;
+  font-size: 13px;
+  text-align: left;
+  display: none;
+  div {
+    padding: 10px 10px 4px 10px;
+  }
+  p {
+    box-sizing: border-box;
+    padding: 4px 10px;
+    width: 100%;
+  }
+}
+
+.make-due p:hover {
+  background-color: $nav-highlight;
+  cursor: pointer;
+}
+.date-button-link {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.date-button-link:focus + .make-due {
+  display: block;
+}
+.make-due:hover {
+  display: block;
+}
+
+.make-list p:hover {
+  background-color: $nav-highlight;
+  cursor: pointer;
+}
+.list-button-link {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.list-button-link:focus + .make-list {
+  display: block;
+}
+.make-list:hover {
+  display: block;
+}

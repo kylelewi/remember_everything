@@ -46,9 +46,14 @@ class ListForm extends React.Component {
   render() {
     return (
       <div className="lists-div">
-        <div className="list-row clearfix" onClick={this.openModal.bind(this)}>
-          <p>Lists</p>
-          <i className="icon-border fa fa-plus" aria-hidden="true"></i>
+        <div className="nav-top" onClick={this.openModal.bind(this)}>
+          <div className="nav-top-content">
+            <div className="menu-arrow"><i className="fa fa-caret-down" aria-hidden="true"></i></div>
+            <div className="all-tasks">Lists</div>
+            <div className="add-new-icon">
+              <i className="fa fa-plus" aria-hidden="true"></i>
+            </div>
+          </div>
         </div>
         <Modal className="list-modal"
           isOpen={this.state.modalIsOpen}

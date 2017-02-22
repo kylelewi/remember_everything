@@ -15,3 +15,11 @@ task2 = user1.tasks.create(name: "Pick flowers for Marian", due_date: Date.today
 task3 = user1.tasks.create(name: "Archery contest practice", due_date: 1.days.from_now, list_id: list1.id, estimate: 60)
 task4 = user1.tasks.create(name: "Build treehouse", due_date: 3.days.ago, list_id: list1.id, estimate: 180)
 task5 = user1.tasks.create(name: "Rob from rich", due_date: Date.today, list_id: list1.id, estimate: 5)
+task6 = user1.tasks.create(name: "Give to poor", due_date: Date.today, list_id: list3.id, estimate: 5)
+
+task7 = user1.tasks.create(name: "Intercept Sheriff's caravan", due_date: Date.today, list_id: list1.id, estimate: 60)
+task8 = user1.tasks.create(name: "Write a new bandit ballad", due_date: Date.today, list_id: list2.id, estimate: 40)
+task9 = user1.tasks.create(name: "Train new merry men recruits", due_date: 6.days.from_now, list_id: list1.id, estimate: 60)
+task10 = user1.tasks.create(name: "Free Will Scarlet from jail", due_date: 1.days.from_now, list_id: list2.id, estimate: 120)
+task11 = user1.tasks.create(name: "Kick back with the villagers", due_date: Date.today, list_id: list2.id, estimate: 40)
+task12 = user1.tasks.create(name: "Write new chapter in memoir", due_date: 4.days.from_now, list_id: list3.id, estimate: 40)

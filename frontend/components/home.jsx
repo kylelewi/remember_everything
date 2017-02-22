@@ -35,7 +35,7 @@ import { connect } from 'react-redux';
               <Link to={"/contact"} className="nav-link">Contact us</Link>
               <Link to={"/login"} className="nav-link">Log in</Link>
               <Link to={"/signup"} className="nav-link">Sign up for free</Link>
-              <button onClick={ this.loginGuest }>
+              <button className="guest-login" onClick={ this.loginGuest }>
                 Guest Login
               </button>
             </navbar>

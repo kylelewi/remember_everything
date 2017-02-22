@@ -11,12 +11,12 @@ class ListIndex extends React.Component {
     return (
       <div>
         <ListFormContainer />
-        <ul>
+        <ul className="menu-items">
           {
             this.props.lists.map(list => (
               <ListIndexItem
-                key={list.id}
-                list={list} />
+                 list={list}
+                 tasks={this.props.tasks} />
             ))
           }
         </ul>

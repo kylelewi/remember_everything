@@ -43,10 +43,26 @@ export const updateChecks = checks => (
   })
 );
 
-export const updateDate = (checks, date) => (
-  $.ajax({
+export const updateDate = (checks, date) => {
+  return $.ajax({
     method: "PATCH",
     url: `api/tasks/date`,
     data: { checks, date }
+  });
+};
+
+export const updateList = (checks, list_id) => {
+  return $.ajax({
+    method: "PATCH",
+    url: `api/tasks/list`,
+    data: { checks, list_id }
+  });
+};
+
+export const deleteTasks = (checks) => (
+  $.ajax({
+    method: "DELETE",
+    url: `api/tasks/destroy`,
+    data: { checks }
   })
 );

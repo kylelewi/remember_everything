@@ -37,8 +37,24 @@ export const updateChecks = checks => dispatch => (
     .then(tasks => dispatch(receiveTasks(tasks)))
 );
 
-export const updateDate = (checks, date) => dispatch => (
-  APIUtil.updateChecks(checks, date)
+export const updateDate = (checks, date) => {
+  return (
+    dispatch => {
+      return (
+        APIUtil.updateDate(checks, date)
+          .then(tasks => dispatch(receiveTasks(tasks)))
+      );
+    }
+  );
+};
+
+export const updateList = (checks, listId) => dispatch => (
+  APIUtil.updateList(checks, listId)
+    .then(tasks => dispatch(receiveTasks(tasks)))
+);
+
+export const deleteTasks = (checks) => dispatch => (
+  APIUtil.deleteTasks(checks)
     .then(tasks => dispatch(receiveTasks(tasks)))
 );
 

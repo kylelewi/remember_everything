@@ -45,7 +45,25 @@ class Api::TasksController < ApplicationController
 
   def bulk_update_due_date
     tasks = Task.where(id: params[:checks])
-    tasks.update_all(due_date: params[:date])
+    if params[:date] == ""
+      tasks.update_all(due_date: nil)
+    else
+      tasks.update_all(due_date: Date.today + Integer(params[:date]))
+    end
+    @tasks = current_user.tasks
+    render :index
+  end
+
+  def bulk_update_list
+    tasks = Task.where(id: params[:checks])
+    tasks.update_all(list_id: params[:list_id])
+    @tasks = current_user.tasks
+    render :index
+  end
+
+  def bulk_destroy_tasks
+    tasks = current_user.tasks.where(id: params[:checks])
+    tasks.delete_all
     @tasks = current_user.tasks
     render :index
   end

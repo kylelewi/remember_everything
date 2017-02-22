@@ -11,6 +11,9 @@ class TaskIndex extends React.Component {
     this.state = {};
     this.toggleCheckbox = this.toggleCheckbox.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
+    this.handleDateUpdate = this.handleDateUpdate.bind(this);
+    this.handleListUpdate = this.handleListUpdate.bind(this);
+    this.handleDeleteTasks = this.handleDeleteTasks.bind(this);
   }
 
   componentDidMount() {
@@ -36,6 +39,16 @@ class TaskIndex extends React.Component {
     this.props.updateDate(checks, date);
   }
 
+  handleListUpdate(listId) {
+    const checks = Object.keys(this.props.checked);
+    this.props.updateList(checks, listId);
+  }
+
+  handleDeleteTasks() {
+    const checks = Object.keys(this.props.checked);
+    this.props.deleteTasks(checks);
+  }
+
   render() {
     let thisList;
     if (this.props.lists) {
@@ -49,7 +62,7 @@ class TaskIndex extends React.Component {
             <div className="completed-tabs">
               <i className="fa fa-print" aria-hidden="true"></i>
               <Link to={"/"}>Incomplete</Link>
-              <Link to={"completed"}>Completed</Link>
+              <Link to={"/main/completed"}>Completed</Link>
               <i className="fa fa-cog" aria-hidden="true"></i>
               <i id="caret" className="fa fa-caret-down" aria-hidden="true"></i>
             </div>
@@ -70,17 +83,33 @@ class TaskIndex extends React.Component {
                 <i id="checkmark" className="fa fa-check" aria-hidden="true"></i>
               </a>
             </div>
-            <div className="action-button-wrapper">
-              <a href="#">
+            <div className="action-button-wrapper date-button">
+              <a className="date-button-link" href="#">
                 <i className="fa fa-calendar" aria-hidden="true"></i>
               </a>
+              <div className="make-due dropdown-pane">
+                <div>Make due:</div>
+                <p onClick={() => this.handleDateUpdate(0)} id="today">Today</p>
+                <p onClick={() => this.handleDateUpdate(1)} id="tomorrow">Tomorrow</p>
+                <p onClick={() => this.handleDateUpdate(7)} id="week">1 week</p>
+                <p onClick={() => this.handleDateUpdate("")} id="no-due-date">No due date</p>
+              </div>
             </div>
             <div className="action-button-wrapper list-wrapper">
-              <a href="#">
+              <a className="list-button-link" href="#">
                 <i className="fa fa-list" aria-hidden="true"></i>
               </a>
+              <div className="make-list dropdown-pane">
+                <div>Make due:</div>
+                {
+                  Object.keys(this.props.lists).map(id => this.props.lists[id])
+                    .map(list => (
+                      <p onClick={() => this.handleListUpdate(list.id)}>{list.name}</p>
+                    ))
+                }
+              </div>
             </div>
-            <div className="action-button-wrapper">
+            <div onClick={this.handleDeleteTasks} className="action-button-wrapper">
               <a href="#">
                 <i className="fa fa-trash-o" aria-hidden="true"></i>
               </a>

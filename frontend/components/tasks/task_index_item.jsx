@@ -26,7 +26,7 @@ class TaskIndexItem extends React.Component {
     if (this.props.router.location.pathname.includes("list")) {
       path = `/main/lists/${this.props.listId}/tasks/${this.props.task.id}`;
     } else {
-      path = `/main/tasks/${this.props.task.id}`;
+      path = `/main/${this.props.router.params.filter}/${this.props.task.id}`;
     }
 
     return path;

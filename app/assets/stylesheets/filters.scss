@@ -9,6 +9,7 @@
 
 
 .filters {
+  margin-bottom: 5px;
   margin-left: 11px;
   margin-right: 11px;
   font-size: 13px;
@@ -23,18 +24,54 @@
   }
   .nav-parent {
   }
-  .nav-top {
+  .nav-top-content {
+    position: relative;
     display: flex;
     align-items: center;
     cursor: pointer;
-    .all-tasks {
-      padding-left: 8px;
+    width: 100%;
+    .count-icon {
+      float: right;
     }
     .menu-arrow {
       color: $deep-blue;
+      width: 20px;
+      text-align: center;
     }
   }
   .menu-items {
-    padding-left: 16px;
+    margin-left: 0;
+    :hover {
+      background-color: $highlight-blue;
+    }
+    .menu-item {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
   }
+}
+
+.count-icon {
+  position: absolute;
+  right: 0;
+  top: 2px;
+  bottom: 2px;
+  background-color: $count-icon;
+  font-size: 10px;
+  padding: 0 5px;
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+  color: black;
+  font-weight: normal;
+}
+
+.menu-item-below {
+  padding-left: 20px;
+}
+
+.menu-item-link:focus {
+  color: $deep-blue;
+  font-weight: bold;
 }

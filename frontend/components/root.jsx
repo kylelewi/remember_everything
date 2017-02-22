@@ -15,7 +15,7 @@ import ListShowContainer from './lists/list_show_container';
 const Root = ({ store }) => {
   function redirectIfLoggedIn(nextState, replace) {
     if (store.getState().session.currentUser) {
-      replace("/main");
+      replace("/main/all");
     }
   }
 
@@ -35,12 +35,19 @@ const Root = ({ store }) => {
           <Route path="/signup" component={ AuthPage } onEnter={redirectIfLoggedIn} />
           <Route path="/main" component={ Main } onEnter={ensureLoggedIn}>
             <IndexRoute component={TaskIndexContainer} />
-            <Route path="tasks" component={TaskIndexContainer} >
-              <Route path=":taskId" component={TaskShowContainer} />
-            </Route>
             <Route path="lists/:listId" component={ListShowContainer} >
               <Route path="tasks/:taskId" component={TaskShowContainer} />
             </Route>
+            <Route path=":filter" component={TaskIndexContainer} >
+              <Route path=":taskId" component={TaskShowContainer} />
+            </Route>
+            // <Route path="/all" component={TaskIndexContainer} />
+            // <Route path="/today" component={TaskIndexContainer} />
+            // <Route path="/tomorrow" component={TaskIndexContainer} />
+            // <Route path="/thisweek" component={TaskIndexContainer} />
+            // <Route path="tasks" component={TaskIndexContainer} >
+            //   <Route path=":taskId" component={TaskShowContainer} />
+            // </Route>
           </Route>
         </Route>
       </Router>
