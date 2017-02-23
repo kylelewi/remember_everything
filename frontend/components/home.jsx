@@ -45,6 +45,14 @@ import { connect } from 'react-redux';
             <h1 className="tagline">Because you've got a ton of things to do.</h1>
             <Link className="signup-link" to={"/signup"}>Sign Up Free</Link>
           </main>
+          <figure className="animation-stage">
+            <figure className="assets-container">
+              <img src={window.images.todoGuy} />
+
+              <img className="smile" src={window.images.smile} />
+
+            </figure>
+          </figure>
         </div>
       );
     }

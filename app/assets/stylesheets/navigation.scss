@@ -30,6 +30,9 @@
     display: block;
     padding-left: 33px;
     outline: none;
+    :placeholder {
+      color: white;
+    }
   }
 }
 

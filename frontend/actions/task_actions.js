@@ -6,6 +6,7 @@ export const RECEIVE_CHECK = "RECEIVE_CHECK";
 export const RECEIVE_CHECKS = "RECEIVE_CHECKS";
 export const CLEAR_CHECKS = "CLEAR_CHECKS";
 export const UPDATE_CHECKS = "UPDATE_CHECKS";
+export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 
 export const fetchTasks = () => dispatch => (
   APIUtil.fetchTasks()
@@ -24,7 +25,8 @@ export const createTask = task => dispatch => (
 
 export const updateTask = task => dispatch => (
   APIUtil.updateTask(task)
-    .then(task => dispatch(receiveTask(task)))
+    .then(task => dispatch(receiveTask(task)),
+          err => dispatch(receiveErrors(err.responseJSON)))
 );
 
 export const filterTasks = filterTerm => dispatch => (
@@ -80,4 +82,9 @@ export const receiveChecks = tasks => ({
 
 export const clearChecks = () => ({
   type: CLEAR_CHECKS
+});
+
+export const receiveErrors = () => ({
+  type: RECEIVE_ERRORS,
+  errors
 });

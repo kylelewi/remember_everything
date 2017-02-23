@@ -25,7 +25,8 @@ const mapStateToProps = (state, ownProps) => {
     {
       tasks: filteredTasks,
       checked: state.tasks.checkedTasks,
-      lists: state.lists
+      lists: state.lists,
+      test: "test"
     }
   );
 };

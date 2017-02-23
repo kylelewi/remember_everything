@@ -45,6 +45,7 @@ class TaskIndex extends React.Component {
   }
 
   handleDeleteTasks() {
+    debugger
     const checks = Object.keys(this.props.checked);
     this.props.deleteTasks(checks);
   }
@@ -74,17 +75,18 @@ class TaskIndex extends React.Component {
             </div>
             <div onClick={this.props.updateChecks} className="action-button-wrapper checkbox-wrapper">
               <input type="checkbox"></input>
-              <a className="checkbox-dropdown" href="#">
+              <a className="checkbox-dropdown" href="javaScript:void(0);">
                 <i id="caret" className="fa fa-caret-down" aria-hidden="true"></i>
               </a>
             </div>
-            <div onClick={this.handleUpdate} className="action-button-wrapper check-wrapper">
+            <div onClick={this.handleUpdate} className="action-button-wrapper check-wrapper"
+                title="Mark task as complete">
               <a href="#">
                 <i id="checkmark" className="fa fa-check" aria-hidden="true"></i>
               </a>
             </div>
-            <div className="action-button-wrapper date-button">
-              <a className="date-button-link" href="#">
+            <div className="action-button-wrapper date-button" title="Change task due date">
+              <a className="date-button-link" href="javaScript:void(0);">
                 <i className="fa fa-calendar" aria-hidden="true"></i>
               </a>
               <div className="make-due dropdown-pane">
@@ -95,8 +97,8 @@ class TaskIndex extends React.Component {
                 <p onClick={() => this.handleDateUpdate("")} id="no-due-date">No due date</p>
               </div>
             </div>
-            <div className="action-button-wrapper list-wrapper">
-              <a className="list-button-link" href="#">
+            <div className="action-button-wrapper list-wrapper" title="Move to new list">
+              <a className="list-button-link" href="javaScript:void(0);">
                 <i className="fa fa-list" aria-hidden="true"></i>
               </a>
               <div className="make-list dropdown-pane">
@@ -109,8 +111,9 @@ class TaskIndex extends React.Component {
                 }
               </div>
             </div>
-            <div onClick={this.handleDeleteTasks} className="action-button-wrapper">
-              <a href="#">
+            <div onClick={this.handleDeleteTasks} className="action-button-wrapper"
+                  title="Delete task">
+              <a href="javaScript:void(0);">
                 <i className="fa fa-trash-o" aria-hidden="true"></i>
               </a>
             </div>

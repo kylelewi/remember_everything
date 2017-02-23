@@ -6,37 +6,32 @@ class Searchbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = { searchText: "" };
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
+    this.onTermChange = this.onTermChange.bind(this);
   }
 
   handleLogout() {
     this.props.logout().then(() => this.props.router.push("/"));
   }
 
-  update(field) {
-    return (e) => {
-      this.setState({[field]: e.target.value});
-    };
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    this.props.filterTasks(this.state.searchText);
+  onTermChange(e) {
+    this.setState({searchText: e.currentTarget.value});
+    this.props.filterTasks(e.currentTarget.value);
   }
 
   render() {
     return (
       <div className="searchbar clearfix">
-        <form
-          onSubmit={this.handleSubmit}
+        <div
           className="search-field-container" >
           <input
             className="search-field"
             type="text"
-            onChange={this.update('searchText')} />
+            onChange={this.onTermChange}
+            placeholder="Search your tasks..."/>
+
           <i className="fa fa-search" aria-hidden="true"></i>
-        </form>
+        </div>
         <navbar className="main-navbar">
           <Link to={"/"}>Terms of Use</Link>
           <Link to={"/"}>Contact</Link>

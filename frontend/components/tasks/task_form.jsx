@@ -14,6 +14,7 @@ class TaskForm extends React.Component {
 
   componentWillReceiveProps() {
     this.setState({list_id: this.props.params.listId});
+
   }
 
   update(field) {
@@ -25,6 +26,17 @@ class TaskForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.createTask(this.state);
+  }
+
+  successMessage(oldTask, newTask) {
+    let messages = [];
+    Object.keys(task).forEach(key => {
+      if (oldTask[key] !== newTask[key]) {
+        messages.push(<p>{key} updated...</p>);
+      }
+    });
+
+    return messages;
   }
 
 
@@ -39,7 +51,11 @@ class TaskForm extends React.Component {
               placeholder="Add a task..." />
             <div className="task-submit">
               <div className="submit-container">
-                <input onSubmit={this.handleSubmit} type="submit" value="Add Task" />
+                <input
+                  onSubmit={this.handleSubmit}
+                  type="submit"
+                  value="Add Task"
+                   />
               </div>
             </div>
         </form>

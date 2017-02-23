@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import TaskIndex from '../tasks/task_index';
-import { fetchTasks, createTask, receiveCheck, clearChecks } from '../../actions/task_actions';
+import {  fetchTasks, createTask, receiveCheck,
+          clearChecks, updateChecks, updateDate,
+          updateList, deleteTasks } from '../../actions/task_actions';
 
 function filterTasks(tasks, listId) {
   return tasks.filter(task => task.list_id === listId);
@@ -32,10 +34,14 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  fetchTasks: () => dispatch(fetchTasks(ownProps.params.listId)),
+  fetchTasks: () => dispatch(fetchTasks()),
   createTask: task => dispatch(createTask(task)),
   checkTask: task => dispatch(receiveCheck(task)),
-  clearChecks: () => dispatch(clearChecks())
+  clearChecks: () => dispatch(clearChecks()),
+  updateChecks: checks => dispatch(updateChecks(checks)),
+  updateDate: (checks, date) => dispatch(updateDate(checks, date)),
+  updateList: (checks, listId) => dispatch(updateList(checks, listId)),
+  deleteTasks: (checks) => dispatch(deleteTasks(checks))
 });
 
 export default connect(

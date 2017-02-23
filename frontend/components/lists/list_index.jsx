@@ -16,6 +16,7 @@ class ListIndex extends React.Component {
             this.props.lists.map(list => (
               <ListIndexItem
                  list={list}
+                 key={list.id}
                  tasks={this.props.tasks} />
             ))
           }
