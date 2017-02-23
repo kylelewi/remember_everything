@@ -32,11 +32,40 @@ class TaskShow extends React.Component {
   }
 
   handleSubmit(e) {
+    let somethingChanged = false;
     e.preventDefault();
-    this.props.updateTask(this.state);
+    Object.keys(this.state).forEach(key => {
+      if (this.state[key] !== this.props.task[key]) {
+        somethingChanged = true;
+        this.props.updateTask(this.state)
+          .then(() => this.props.toggleSuccess(true));
+      }
+    });
+    if (!somethingChanged) {
+      this.props.toggleSuccess(false);
+    }
   }
 
+  handleErrors(key) {
+    let returnError = null;
+    if (this.props.errors) {
+      this.props.errors.forEach((error) => {
+        if (error.includes(key)) {
+          returnError = <p className="error">{error}</p>;
+        }
+      });
+    }
+    return returnError
+  }
 
+  showSuccessMessage() {
+    let returnSuccess = null;
+    if (this.props.success) {
+      debugger
+      returnSuccess = <p className="success">Task updated!</p>
+    }
+    return returnSuccess;
+  }
 
   render () {
     const task = this.state;
@@ -52,6 +81,7 @@ class TaskShow extends React.Component {
           </Link>
         </div>
         <form className="task-show-form">
+          {this.handleErrors("Name")}
           <div className="task-show-heading">
             <div className="mini-line"></div>
             <input
@@ -102,6 +132,8 @@ class TaskShow extends React.Component {
                 placeholder="time to complete?"/>
             </div>
           </div>
+          {this.handleErrors("Estimate")}
+          {this.showSuccessMessage.bind(this)()}
         </form>
       </div>
     );

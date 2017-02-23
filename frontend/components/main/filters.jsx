@@ -21,12 +21,12 @@ const Filters = props => {
           <Link className="menu-item-link" to={"/main/today"}>
             <div className="menu-item menu-item-below">
               <p className="filter-name">Today</p>
-              <div className="count-icon">{Selectors.dueToday(props.tasks)}</div>
+              <div className="count-icon">{Selectors.tasksDueToday(props.tasks).length}</div>
             </div>
           </Link>
           <Link className="menu-item-link" to={"/main/tomorrow"}>
             <div className="menu-item menu-item-below">Tomorrow
-              <p className="count-icon">{Selectors.dueTomorrow(props.tasks)}</p>
+              <p className="count-icon">{Selectors.tasksDueTomorrow(props.tasks).length}</p>
             </div>
           </Link>
           <Link className="menu-item-link" to={"/main/thisweek"}>

@@ -78,3 +78,14 @@
   0% {left: 0%; }
   100% {left: 100%;}
 }
+
+.success {
+  background-color: $success;
+  width: 90%;
+  margin: 15px auto;
+  padding: 20px 0;
+  border: 1px solid $success-border;
+  text-align: center;
+  border-radius: 5px;
+  color: $success-text;
+}

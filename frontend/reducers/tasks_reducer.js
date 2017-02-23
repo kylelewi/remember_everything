@@ -1,9 +1,13 @@
-import { RECEIVE_TASKS, RECEIVE_TASK, RECEIVE_CHECK, RECEIVE_CHECKS, CLEAR_CHECKS } from '../actions/task_actions';
+import {  RECEIVE_TASKS, RECEIVE_TASK, RECEIVE_CHECK,
+          RECEIVE_CHECKS, CLEAR_CHECKS, RECEIVE_ERRORS,
+          CLEAR_ERRORS, TOGGLE_SUCCESS } from '../actions/task_actions';
 import merge from 'lodash/merge';
 
 const initialState = {
   tasks: {},
-  checkedTasks: {}
+  checkedTasks: {},
+  errors: [],
+  success: false
 };
 
 const TasksReducer = (state = initialState, action) => {
@@ -25,6 +29,12 @@ const TasksReducer = (state = initialState, action) => {
       return { tasks: newTasks, checkedTasks: state.checkedTasks };
     case CLEAR_CHECKS:
       return { tasks: state.tasks, checkedTasks: {} };
+    case RECEIVE_ERRORS:
+      return Object.assign({}, state, { errors: action.errors });
+    case CLEAR_ERRORS:
+      return Object.assign({}, state, { errors: []});
+    case TOGGLE_SUCCESS:
+      return Object.assign({}, state, { success: action.bool });
     default:
       return state;
   }

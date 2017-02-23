@@ -3,6 +3,7 @@ import TaskIndex from '../tasks/task_index';
 import {  fetchTasks, createTask, receiveCheck,
           clearChecks, updateChecks, updateDate,
           updateList, deleteTasks } from '../../actions/task_actions';
+import * as Selectors from '../../util/selectors';
 
 function filterTasks(tasks, listId) {
   return tasks.filter(task => task.list_id === listId);
@@ -20,8 +21,9 @@ function isEmpty(object) {
 const mapStateToProps = (state, ownProps) => {
   let tasksArray = Object.keys(state.tasks.tasks).map(id => state.tasks.tasks[id]);
   let filteredTasks = filterTasks(tasksArray, parseInt(ownProps.params.listId));
+  let filteredIncompleteTasks = Selectors.incompleteTasks(filteredTasks);
   return {
-    tasks: filteredTasks,
+    tasks: filteredIncompleteTasks,
     checked: state.tasks.checkedTasks,
     listId: ownProps.params.listId,
     lists: state.lists

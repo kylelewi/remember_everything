@@ -45,7 +45,6 @@ class TaskIndex extends React.Component {
   }
 
   handleDeleteTasks() {
-    debugger
     const checks = Object.keys(this.props.checked);
     this.props.deleteTasks(checks);
   }
@@ -55,6 +54,8 @@ class TaskIndex extends React.Component {
     if (this.props.lists) {
       thisList = this.props.lists[this.props.params.listId];
     }
+    let estimateInMinutes = Selectors.sumEstimates(this.props.tasks);
+    let estimateFormatted = Selectors.convertTime(estimateInMinutes);
 
     return (
       <div className="task-index">
@@ -81,7 +82,7 @@ class TaskIndex extends React.Component {
             </div>
             <div onClick={this.handleUpdate} className="action-button-wrapper check-wrapper"
                 title="Mark task as complete">
-              <a href="#">
+              <a href="javaScript:void(0);">
                 <i id="checkmark" className="fa fa-check" aria-hidden="true"></i>
               </a>
             </div>
@@ -91,10 +92,10 @@ class TaskIndex extends React.Component {
               </a>
               <div className="make-due dropdown-pane">
                 <div>Make due:</div>
-                <p onClick={() => this.handleDateUpdate(0)} id="today">Today</p>
-                <p onClick={() => this.handleDateUpdate(1)} id="tomorrow">Tomorrow</p>
-                <p onClick={() => this.handleDateUpdate(7)} id="week">1 week</p>
-                <p onClick={() => this.handleDateUpdate("")} id="no-due-date">No due date</p>
+                <p key="today" onClick={() => this.handleDateUpdate(0)} id="today">Today</p>
+                <p key="tomorrow" onClick={() => this.handleDateUpdate(1)} id="tomorrow">Tomorrow</p>
+                <p key="week" onClick={() => this.handleDateUpdate(7)} id="week">1 week</p>
+                <p key="no-due-date" onClick={() => this.handleDateUpdate("")} id="no-due-date">No due date</p>
               </div>
             </div>
             <div className="action-button-wrapper list-wrapper" title="Move to new list">
@@ -102,11 +103,11 @@ class TaskIndex extends React.Component {
                 <i className="fa fa-list" aria-hidden="true"></i>
               </a>
               <div className="make-list dropdown-pane">
-                <div>Make due:</div>
+                <div>Assign to list:</div>
                 {
                   Object.keys(this.props.lists).map(id => this.props.lists[id])
                     .map(list => (
-                      <p onClick={() => this.handleListUpdate(list.id)}>{list.name}</p>
+                      <p key={list.id} onClick={() => this.handleListUpdate(list.id)}>{list.name}</p>
                     ))
                 }
               </div>
@@ -156,7 +157,9 @@ class TaskIndex extends React.Component {
                   <figcaption>tasks</figcaption>
                 </div>
                 <div className="total-time">
-                  <h3>{ Selectors.sumEstimates(this.props.tasks) }<span>mins</span></h3>
+                  <h3>
+                    {estimateFormatted.hours}<span>hrs </span>{estimateFormatted.minutes}<span>mins</span>
+                  </h3>
                   <figcaption>estimated</figcaption>
                 </div>
               </div>

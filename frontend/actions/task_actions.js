@@ -7,6 +7,8 @@ export const RECEIVE_CHECKS = "RECEIVE_CHECKS";
 export const CLEAR_CHECKS = "CLEAR_CHECKS";
 export const UPDATE_CHECKS = "UPDATE_CHECKS";
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
+export const CLEAR_ERRORS = "CLEAR_ERRORS";
+export const TOGGLE_SUCCESS = "TOGGLE_SUCCESS";
 
 export const fetchTasks = () => dispatch => (
   APIUtil.fetchTasks()
@@ -84,7 +86,17 @@ export const clearChecks = () => ({
   type: CLEAR_CHECKS
 });
 
-export const receiveErrors = () => ({
+export const receiveErrors = (errors) => ({
   type: RECEIVE_ERRORS,
   errors
+});
+
+export const clearErrors = () => ({
+  type: CLEAR_ERRORS,
+  errors
+});
+
+export const toggleSuccess = bool => ({
+  type: TOGGLE_SUCCESS,
+  bool
 });
