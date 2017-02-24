@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import TaskIndex from './task_index';
 import {  fetchTasks, createTask, receiveCheck,
           clearChecks, updateChecks, updateDate,
-          updateList, deleteTasks } from '../../actions/task_actions';
+          updateList, deleteTasks, changeSearchTerm } from '../../actions/task_actions';
 import * as Selectors from '../../util/selectors';
 
 const mapStateToProps = (state, ownProps) => {
@@ -19,14 +19,14 @@ const mapStateToProps = (state, ownProps) => {
   } else if (pathname === "completed") {
     filteredTasks = Selectors.completedTasks(state.tasks.tasks);
   } else {
-    filteredTasks = Object.keys(state.tasks.tasks).map(id => state.tasks.tasks[id]);
+    filteredTasks = Selectors.incompleteTasks(state.tasks.tasks);
   }
   return(
     {
       tasks: filteredTasks,
       checked: state.tasks.checkedTasks,
       lists: state.lists,
-      test: "test"
+      searchTerm: state.searchTerm
     }
   );
 };
@@ -39,7 +39,8 @@ const mapDispatchToProps = dispatch => ({
   updateChecks: checks => dispatch(updateChecks(checks)),
   updateDate: (checks, date) => dispatch(updateDate(checks, date)),
   updateList: (checks, listId) => dispatch(updateList(checks, listId)),
-  deleteTasks: (checks) => dispatch(deleteTasks(checks))
+  deleteTasks: (checks) => dispatch(deleteTasks(checks)),
+  changeSearchTerm: searchTerm => dispatch(changeSearchTerm(searchTerm))
 });
 
 export default connect(

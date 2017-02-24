@@ -59,7 +59,11 @@
   transition: height .3s;
 }
 
-.task-form-element:hover input:focus + .task-submit {
+.task-form-element:hover + .task-submit {
+  height: 50px;
+}
+
+.task-submit:hover {
   height: 50px;
 }
 

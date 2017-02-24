@@ -20,7 +20,7 @@ const TasksReducer = (state = initialState, action) => {
       return { tasks: action.tasks, checkedTasks: {} };
     case RECEIVE_TASK:
       newTasks = merge({}, state.tasks, {[action.task.id]: action.task});
-      return merge({}, state, {tasks: newTasks });
+      return Object.assign(newState, {tasks: newTasks, errors: []});
     case RECEIVE_CHECK:
       const newChecks = merge({}, state.checkedTasks, { [action.task.id]: !state.checkedTasks[action.task.id] });
       return { tasks: state.tasks, checkedTasks: newChecks };

@@ -33,8 +33,6 @@ class Searchbar extends React.Component {
           <i className="fa fa-search" aria-hidden="true"></i>
         </div>
         <navbar className="main-navbar">
-          <Link to={"/"}>Terms of Use</Link>
-          <Link to={"/"}>Contact</Link>
           <button onClick={this.handleLogout}>Log out</button>
         </navbar>
       </div>

@@ -61,11 +61,19 @@ class TaskShow extends React.Component {
   showSuccessMessage() {
     let returnSuccess = null;
     if (this.props.success) {
-      debugger
       returnSuccess = <p className="success">Task updated!</p>
     }
     return returnSuccess;
   }
+
+  handleKeyPress(event) {
+    if (event.key === 'Enter') {
+      this.handleSubmit(event);
+    }
+  }
+
+
+
 
   render () {
     const task = this.state;
@@ -80,7 +88,7 @@ class TaskShow extends React.Component {
             close <i className="fa fa-times" aria-hidden="true"></i>
           </Link>
         </div>
-        <form className="task-show-form">
+        <form className="task-show-form" onKeyPress={this.handleKeyPress.bind(this)}>
           {this.handleErrors("Name")}
           <div className="task-show-heading">
             <div className="mini-line"></div>

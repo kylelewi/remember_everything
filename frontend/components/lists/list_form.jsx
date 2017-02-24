@@ -15,7 +15,7 @@ class ListForm extends React.Component {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {name: this.props.list.name, modalIsOpen: false };
-    // this.state = this.props.list;
+    this.closeModal = this.closeModal.bind(this);
   }
 
   componentWillMount() {
@@ -32,7 +32,7 @@ class ListForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.createList(this.state);
-    this.closeModal.bind(this);
+    this.closeModal();
   }
 
   openModal() {

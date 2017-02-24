@@ -1,4 +1,5 @@
 import React from 'react';
+import Modal from 'react-modal';
 import TaskIndexItem from './task_index_item';
 import TaskFormContainer from './task_form_container';
 import { Link } from 'react-router';
@@ -62,7 +63,6 @@ class TaskIndex extends React.Component {
         <div className="task-index-list">
           <div className="completed-filters">
             <div className="completed-tabs">
-              <i className="fa fa-print" aria-hidden="true"></i>
               <Link to={"/"}>Incomplete</Link>
               <Link to={"/main/completed"}>Completed</Link>
               <i className="fa fa-cog" aria-hidden="true"></i>
