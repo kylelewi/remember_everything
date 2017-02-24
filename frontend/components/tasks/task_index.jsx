@@ -65,8 +65,6 @@ class TaskIndex extends React.Component {
             <div className="completed-tabs">
               <Link to={"/"}>Incomplete</Link>
               <Link to={"/main/completed"}>Completed</Link>
-              <i className="fa fa-cog" aria-hidden="true"></i>
-              <i id="caret" className="fa fa-caret-down" aria-hidden="true"></i>
             </div>
           </div>
         <div className="action-buttons">
@@ -187,3 +185,9 @@ class TaskIndex extends React.Component {
 }
 
 export default TaskIndex;
+
+
+
+
+// <i className="fa fa-cog" aria-hidden="true"></i>
+// <i id="caret" className="fa fa-caret-down" aria-hidden="true"></i>

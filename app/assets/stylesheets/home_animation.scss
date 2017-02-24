@@ -3,16 +3,93 @@
   height: 100%;
 }
 
+.animation-stage {
+  height: 500px;
+}
+
 .assets-container {
   display: block;
   width: 450px;
   margin: 5% auto 0 auto;
   position: relative;
+  #todo-guy {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+  }
+  #left-arm-top {
+    position: absolute;
+    width: 170px;
+    left: 275px;
+    top: 80px;
+    z-index: 1;
+    opacity: 0;
+    transform-origin: bottom left;
+    animation: fade-in .75s 1s forwards,
+      wave3 2s 3.2s forwards;
+  }
+  #left-arm-bottom {
+    position: absolute;
+    width: 190px;
+    left: 255px;
+    top: 210px;
+    opacity: 0;
+    transform-origin: top left;
+    animation: fade-in .75s 2.5s forwards,
+      wave2 2s 2.8s forwards;
+  }
+  #right-arm-top {
+    position: absolute;
+    width: 120px;
+    left: 60px;
+    top: 0;
+    opacity: 0;
+    transform-origin: bottom right;
+    animation: fade-in .75s 2s forwards,
+      wave 2s 2.5s forwards;
+  }
+  #right-arm-bottom {
+    position: absolute;
+    width: 190px;
+    left: 0;
+    top: 130px;
+    opacity: 0;
+    transform-origin: bottom right;
+    animation: fade-in .75s 1.5s forwards,
+      wave3 3s 3s forwards;
+  }
 }
 
 .smile {
   position: absolute;
   width: 40px;
   left: 45%;
-  top: 110px;
+  top: 115px;
+  z-index: 2;
+  transform: rotate(180deg);
+  animation: smile 1s 2s forwards;
+}
+
+@keyframes fade-in {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@keyframes smile {
+  0% {transform: rotate(180deg);}
+  100% {transform: rotate(0);}
+}
+
+@keyframes wave {
+  0%, 33%, 66%, 100% {transform: rotate(0);}
+  16%, 50%, 82% {transform: rotate(10deg);}
+}
+@keyframes wave2 {
+  0%, 50%, 100% {transform: rotate(0);}
+  25%, 75% {transform: rotate(10deg);}
+}
+@keyframes wave3 {
+  0%, 50%, 100% {transform: rotate(0);}
+  25%, 75% {transform: rotate(-20deg);}
 }

@@ -47,7 +47,11 @@ import { connect } from 'react-redux';
           </main>
           <figure className="animation-stage">
             <figure className="assets-container">
-              <img src={window.images.todoGuy} />
+              <img id="todo-guy" src={window.images.todoGuy} />
+              <img id="left-arm-top" src={window.images.leftArmTop} />
+              <img id="left-arm-bottom" src={window.images.leftArmBottom} />
+              <img id="right-arm-top" src={window.images.rightArmTop} />
+              <img id="right-arm-bottom" src={window.images.rightArmBottom} />
 
               <img className="smile" src={window.images.smile} />
 
