@@ -72,12 +72,6 @@ class TaskIndex extends React.Component {
             <div className="task-filter-dropdown">
 
             </div>
-            <div onClick={this.props.updateChecks} className="action-button-wrapper checkbox-wrapper">
-              <input type="checkbox"></input>
-              <a className="checkbox-dropdown" href="javaScript:void(0);">
-                <i id="caret" className="fa fa-caret-down" aria-hidden="true"></i>
-              </a>
-            </div>
             <div onClick={this.handleUpdate} className="action-button-wrapper check-wrapper"
                 title="Mark task as complete">
               <a href="javaScript:void(0);">
