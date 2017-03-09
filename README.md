@@ -37,7 +37,7 @@ A list of some of the feature currently included in Remember Everything:
 
   This feature was achieved by creating a new slice of state within the tasks state. The "checked" property is stored at the task index component level, but the index component passes the property to each of its children along with a function to toggle the status (true/false) of that row's checked property.
 
-  ![alt text](https://raw.githubusercontent.com/bongatoughy/remember_everything/master/docs/screenshots/batch_screenshot.gif "Batch Update Screenshot")
+  ![alt text](https://raw.githubusercontent.com/bongatoughy/remember_everything/master/docs/screenshots/batch_update_screenshot.gif "Batch Update Screenshot")
 
 ### Search
 
