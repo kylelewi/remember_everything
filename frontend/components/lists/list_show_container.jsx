@@ -28,11 +28,6 @@ const mapStateToProps = (state, ownProps) => {
     listId: ownProps.params.listId,
     lists: state.lists
   };
-  // if (isEmpty(state.tasks)) {
-  //   return { tasks: [] };
-  // } else {
-  //   return { tasks:  };
-  // }
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
@@ -50,7 +45,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(TaskIndex);
-
-
-// slectors.js
-// state.tasks.filter(task => task.list_id === listId)

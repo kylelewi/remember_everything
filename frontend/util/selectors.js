@@ -139,9 +139,3 @@ export const tasksCompleted = (tasks) => {
 
   return count;
 };
-
-// export const dueThisWeek = (tasks) => {
-//   const tasksArray = Object.keys.map(id => tasks[id]);
-//   let count = 0;
-//   tasksArray.forEach(task =>
-// }

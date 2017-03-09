@@ -179,9 +179,3 @@ class TaskIndex extends React.Component {
 }
 
 export default TaskIndex;
-
-
-
-
-// <i className="fa fa-cog" aria-hidden="true"></i>
-// <i id="caret" className="fa fa-caret-down" aria-hidden="true"></i>

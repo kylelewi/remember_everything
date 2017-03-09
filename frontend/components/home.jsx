@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 
 
 
-// const Home = props => (
   class Home extends React.Component {
     constructor(props) {
       super(props);

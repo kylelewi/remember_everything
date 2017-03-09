@@ -9,7 +9,6 @@ class Login extends React.Component{
   }
 
   componentDidMount() {
-    // this.redirectIfLoggedIn();
     this.props.clearErrors();
   }
 

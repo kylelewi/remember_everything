@@ -1,4 +1,3 @@
-// frontend/components/root.jsx
 import React from 'react';
 import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, hashHistory, IndexRedirect } from 'react-router';
@@ -41,13 +40,6 @@ const Root = ({ store }) => {
             <Route path=":filter" component={TaskIndexContainer} >
               <Route path=":taskId" component={TaskShowContainer} />
             </Route>
-            // <Route path="/all" component={TaskIndexContainer} />
-            // <Route path="/today" component={TaskIndexContainer} />
-            // <Route path="/tomorrow" component={TaskIndexContainer} />
-            // <Route path="/thisweek" component={TaskIndexContainer} />
-            // <Route path="tasks" component={TaskIndexContainer} >
-            //   <Route path=":taskId" component={TaskShowContainer} />
-            // </Route>
           </Route>
         </Route>
       </Router>
@@ -56,28 +48,3 @@ const Root = ({ store }) => {
 }
 
 export default Root;
-
-
-// // /main
-// <Main>
-//   <TaskIndexContainer />
-// </Main>
-//
-// // /main/tasks/task:id
-// <Main>
-//   <TaskIndexContainer>
-//     <TaskShowContainer />
-//   </TaskIndexContainer>
-// </Main>
-//
-// // /main/lits/:listId
-// <Main>
-//   <ListShowContainer />
-// </Main>
-//
-// // /main/lits/:listId/tasks/:taskId
-// <Main>
-//   <ListShowContainer>
-//     <TaskShowContainer />
-//   </ListShowContainer>
-// </Main>
