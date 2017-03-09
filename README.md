@@ -48,6 +48,19 @@ A list of some of the feature currently included in Remember Everything:
 
   The "checked" property is stored at the task index component level, but the index component passes the property to each of its children along with a function to toggle the status (true/false) of that row's checked property.
 
+  ```javascript
+  const mapStateToProps = state => {
+    let filteredTasks = Selectors.incompleteTasks(state.tasks.tasks);
+    return(
+      {
+        tasks: filteredTasks,
+        checked: state.tasks.checkedTasks,
+        lists: state.lists,
+        searchTerm: state.searchTerm
+      }
+    );
+  };
+  ```
   ![alt text](http://kylelewis.co/remember_everything/batch_update_screenshot.gif "Batch Update Screenshot")
 
 ### Search
