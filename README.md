@@ -1,8 +1,8 @@
 # Remember Everything
 
-[RememberEverything live][heroku] **NB:** This should be a link to your production site
+[RememberEverything live][heroku]
 
-[heroku]: http://remember-everything.herokuapp.com
+[heroku]: http://remembereverything.info
 
 Remember Everything is a full-stack web application inspired by RememberTheMilk. It utilizes a Rails backend (fashioned as an API) to be used with React-Redux on the front end.
 
