@@ -22,6 +22,8 @@ A list of some of the feature currently included in Remember Everything:
 
   Tasks are rendered in the index view. Clicking on a task in the index view displays the task show view. The task show view is editable and doubles as the task edit view. Edits to the task are updated in real time for a clean, professional user experience.
 
+  ![alt text](https://raw.githubusercontent.com/bongatoughy/remember_everything/master/docs/screenshots/root_screenshot.jpg "Remember Everything Screenshot")
+
 ### Lists
 
   New lists can be created at anytime. The Lists table in the database contains a column for list_id and the name of the list. Rendering a list index view will display all tasks that have that list's id stored in the task table's list_id column.
