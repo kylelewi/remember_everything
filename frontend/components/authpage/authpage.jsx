@@ -3,7 +3,6 @@ import LoginContainer from './login_container';
 import SignupContainer from './signup_container';
 
 const AuthPage = props => {
-
   let component = props.router.location.pathname === "/login" ? <LoginContainer/> : <SignupContainer/>;
   return (
     <div className="authpage">

@@ -1,7 +1,9 @@
 @import 'global';
 
 .list-modal {
-  padding: 2.5%;
+  padding: 30px 20px;
+  width: 400px;
+  height: 200px !important;
   background-color: white;
   box-sizing: border-box;
   border: 1px solid $border-grey;
