@@ -35,7 +35,18 @@ A list of some of the feature currently included in Remember Everything:
 
   The index view (task index and list show) has a batch update feature. Each row in the index view contains a checkbox. The user can select multiple tasks at once by checking the checkbox and selecting a batch update action from the icon menu at the top of the index view.
 
-  This feature was achieved by creating a new slice of state within the tasks state. The "checked" property is stored at the task index component level, but the index component passes the property to each of its children along with a function to toggle the status (true/false) of that row's checked property.
+  This feature was achieved by creating a new slice of state within the tasks state.
+
+  ```javascript
+  const initialState = {
+    tasks: {},
+    checkedTasks: {},
+    errors: [],
+    success: false
+  };
+  ```
+
+  The "checked" property is stored at the task index component level, but the index component passes the property to each of its children along with a function to toggle the status (true/false) of that row's checked property.
 
   ![alt text](http://kylelewis.co/remember_everything/batch_update_screenshot.gif "Batch Update Screenshot")
 
