@@ -20,7 +20,6 @@ class TaskIndexItem extends React.Component {
     }
   }
 
-// const TaskIndexItem = ({ task, router, listId, checked, toggleCheckbox, checkedCount, clearChecks }) => {
   setPathname() {
     let path;
     if (this.props.router.location.pathname.includes("list")) {
@@ -31,11 +30,6 @@ class TaskIndexItem extends React.Component {
 
     return path;
   }
-  //
-  // handleRedirect() {
-  //   this.props.toggleCheckbox(task);
-  //   this.props.router.push(setPathname());
-  // }
 
   handleClickLink(task) {
     this.props.clearChecks();

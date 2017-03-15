@@ -133,11 +133,13 @@ class TaskShow extends React.Component {
             <div className="clearfix">
               <label>estimate</label>
               <input
+                className="estimate-input"
                 type="text"
                 value={task.estimate ? task.estimate : ""}
                 onChange={this.update('estimate')}
                 onBlur={this.handleSubmit}
-                placeholder="time to complete?"/>
+                placeholder="time"/>
+              <span className="estimate-units">minutes</span>
             </div>
           </div>
           {this.handleErrors("Estimate")}
