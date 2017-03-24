@@ -97,10 +97,6 @@ class TaskShow extends React.Component {
               value={task.name}
               onChange={this.update('name')}
               onBlur={this.handleSubmit} />
-            <div className="icons-wrapper">
-              <i className="fa fa-info" aria-hidden="true"></i>
-              <i className="fa fa-print" aria-hidden="true"></i>
-            </div>
           </div>
 
           <div className="other-fields">
