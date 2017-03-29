@@ -18,7 +18,6 @@ const TasksReducer = (state = initialState, action) => {
   switch (action.type) {
     case RECEIVE_TASKS:
       let thisNewState = Object.assign({}, newState, { tasks: action.tasks, checkedTasks: {} });
-      debugger
       return thisNewState;
     case RECEIVE_TASK:
       newTasks = merge({}, state.tasks, {[action.task.id]: action.task});
