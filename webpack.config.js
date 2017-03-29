@@ -1,5 +1,5 @@
 // webpack.config.js
-import webpack from 'webpack';
+var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
