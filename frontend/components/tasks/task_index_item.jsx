@@ -4,7 +4,6 @@ import { Link, hashHistory } from 'react-router';
 class TaskIndexItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = props.checked;
   }
 
   componentWillReceiveProps(newProps) {
@@ -44,7 +43,7 @@ class TaskIndexItem extends React.Component {
       <div className="mini-line"></div>
         <div className="checkbox-wrapper">
           <input onClick={() => this.props.toggleCheckbox(this.props.task)} type="checkbox"
-          checked={this.state} />
+          checked={!!this.props.checked} />
         </div>
         <Link onClick={() => this.handleClickLink(this.props.task)} to={this.setPathname(this.props.router)}>
           <div className="task-item-content">
