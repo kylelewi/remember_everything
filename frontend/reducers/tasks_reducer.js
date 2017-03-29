@@ -21,22 +21,22 @@ const TasksReducer = (state = initialState, action) => {
       return thisNewState;
     case RECEIVE_TASK:
       newTasks = merge({}, state.tasks, {[action.task.id]: action.task});
-      return merge(newState, {tasks: newTasks, errors: []});
+      return Object.assign(newState, {tasks: newTasks, errors: []});
     case RECEIVE_CHECK:
       const receivedCheck = { [action.task.id]: !state.checkedTasks[action.task.id] };
       const newChecks = merge({}, state.checkedTasks, receivedCheck);
-      return merge(newState, { tasks: state.tasks, checkedTasks: newChecks });
+      return Object.assign(newState, { tasks: state.tasks, checkedTasks: newChecks });
     case RECEIVE_CHECKS:
       newTasks = merge({}, state.tasks, action.tasks);
-      return merge(newState, { tasks: newTasks, checkedTasks: state.checkedTasks });
+      return Object.assign(newState, { tasks: newTasks, checkedTasks: state.checkedTasks });
     case CLEAR_CHECKS:
-      return merge(newState, { tasks: state.tasks, checkedTasks: {} });
+      return Object.assign(newState, { tasks: state.tasks, checkedTasks: {} });
     case RECEIVE_ERRORS:
-      return merge(newState, { errors: action.errors });
+      return Object.assign(newState, { errors: action.errors });
     case CLEAR_ERRORS:
-      return merge({}, state, { errors: []});
+      return Object.assign({}, state, { errors: []});
     case TOGGLE_SUCCESS:
-      return merge({}, state, { success: action.bool });
+      return Object.assign({}, state, { success: action.bool });
     default:
       return state;
   }
