@@ -31,22 +31,22 @@ class TaskIndex extends React.Component {
   }
 
   handleUpdate() {
-    const checks = Object.keys(this.props.checked);
+    const checks = Object.keys(this.props.checked).filter(id => this.props.checked[id]);
     this.props.updateChecks(checks);
   }
 
   handleDateUpdate(date) {
-    const checks = Object.keys(this.props.checked);
+    const checks = Object.keys(this.props.checked).filter(id => this.props.checked[id]);
     this.props.updateDate(checks, date);
   }
 
   handleListUpdate(listId) {
-    const checks = Object.keys(this.props.checked);
+    const checks = Object.keys(this.props.checked).filter(id => this.props.checked[id]);
     this.props.updateList(checks, listId);
   }
 
   handleDeleteTasks() {
-    const checks = Object.keys(this.props.checked);
+    const checks = Object.keys(this.props.checked).filter(id => this.props.checked[id]);
     this.props.deleteTasks(checks);
   }
 
