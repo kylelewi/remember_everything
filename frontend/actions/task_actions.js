@@ -31,10 +31,12 @@ export const updateTask = task => dispatch => (
           err => dispatch(receiveErrors(err.responseJSON)))
 );
 
-export const filterTasks = filterTerm => dispatch => (
-  APIUtil.filterTasks(filterTerm)
-    .then(tasks => dispatch(receiveTasks(tasks)))
-);
+export const filterTasks = filterTerm => dispatch => {
+  return (
+    APIUtil.filterTasks(filterTerm)
+      .then(tasks => dispatch(receiveTasks(tasks)))
+  );
+};
 
 export const updateChecks = checks => dispatch => (
   APIUtil.updateChecks(checks)

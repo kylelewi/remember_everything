@@ -31,7 +31,7 @@ class Api::TasksController < ApplicationController
     if params[:filter_term] == ""
       @tasks = current_user.tasks
     else
-      @tasks = current_user.tasks.where("lower(name) LIKE ?", "#{params[:filter_term].downcase}%")
+      @tasks = current_user.tasks.where("lower(name) LIKE ?", "%#{params[:filter_term].downcase}%")
       render :index;
     end
   end
