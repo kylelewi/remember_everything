@@ -1,11 +1,25 @@
 import { values } from 'lodash';
 
-export const objectToArray = (object) => {
-  return Object.keys(object).map(id => object[id]);
+const taskDueDate = (task) => {
+  if (task) {
+    let taskDate = task.due_date.split("-").map(string => parseInt(string));
+    let dueDate = new Date();
+    dueDate.setFullYear(taskDate[0]);
+    dueDate.setMonth(taskDate[1] - 1);
+    dueDate.setDate(taskDate[2]);
+    dueDate.setHours(0, 0, 0);
+    return dueDate;
+  }
 };
 
-export const convertDueDate = (task) => {
-  return new Date(task.due_date).getTime() + 18000000;
+const today = () => {
+  let today = new Date();
+  today.setHours(0, 0, 0);
+  return today;
+};
+
+export const objectToArray = (object) => {
+  return Object.keys(object).map(id => object[id]);
 };
 
 export const incompleteTasks = (tasks) => {
@@ -19,20 +33,20 @@ export const completedTasks = (tasks) => {
 };
 
 export const tasksDueToday = (tasks) => {
-  var today = new Date();
-  var dateToday = new Date(today.getFullYear() , today.getMonth(), today.getDate()).getTime();
-  const tasksArray = incompleteTasks(objectToArray(tasks));
+  let thisDay = today();
+  let tasksArray = objectToArray(tasks);
+  let incomplete = incompleteTasks(tasksArray);
 
-  return tasksArray.filter(task => dateToday === convertDueDate(task));
+  return incomplete.filter(task => (thisDay - taskDueDate(task) === 0));
 };
 
 export const tasksDueTomorrow = (tasks) => {
-  var today = new Date();
-  var dateToday = new Date(today.getFullYear() , today.getMonth(), today.getDate()).getTime();
-  var dateTomorrow = dateToday + 86400000;
-  const tasksArray = incompleteTasks(objectToArray(tasks));
+  let tomorrow = today();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  let tasksArray = objectToArray(tasks);
+  let incomplete = incompleteTasks(tasksArray);
 
-  return tasksArray.filter(task => dateTomorrow === convertDueDate(task));
+  return incomplete.filter(task => (tomorrow - taskDueDate(task) === 86400000));
 };
 
 export const tasksDueThisWeek = (tasks) => {
@@ -47,26 +61,6 @@ export const tasksDueThisWeek = (tasks) => {
   return filteredTasks;
 };
 
-export const convertTime = (timeInMinutes) => {
-  let hours = Math.floor(timeInMinutes / 60);
-  let minutes = timeInMinutes - (hours * 60);
-  return { hours, minutes };
-};
-
-
-
-
-
-
-
-
-
-export const countTasks = (tasks) => {
-  const tasksArray = Object.keys(tasks).map(id => tasks[id]);
-  return tasksArray.length;
-};
-
-
 export const sumEstimates = (tasks) => {
   const tasksArray = Object.keys(tasks).map(id => tasks[id]);
   let sum = 0;
@@ -76,6 +70,18 @@ export const sumEstimates = (tasks) => {
 
   return sum;
 };
+
+export const convertTime = (timeInMinutes) => {
+  let hours = Math.floor(timeInMinutes / 60);
+  let minutes = timeInMinutes - (hours * 60);
+  return { hours, minutes };
+};
+
+export const countTasks = (tasks) => {
+  const tasksArray = Object.keys(tasks).map(id => tasks[id]);
+  return tasksArray.length;
+};
+
 
 export const dueToday = (tasks) => {
   var today = new Date();
@@ -92,8 +98,8 @@ export const dueToday = (tasks) => {
 
   return count;
 };
-
-
+//
+//
 export const dueTomorrow = (tasks) => {
   var today = new Date();
   var dateToday = new Date(today.getFullYear() , today.getMonth(), today.getDate()).getTime();

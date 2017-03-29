@@ -3,24 +3,35 @@ import TaskIndex from './task_index';
 import {  fetchTasks, createTask, receiveCheck,
           clearChecks, updateChecks, updateDate,
           updateList, deleteTasks, changeSearchTerm } from '../../actions/task_actions';
-import * as Selectors from '../../util/selectors';
+import TaskFilters from '../../util/task_filters';
+
 
 const mapStateToProps = (state, ownProps) => {
-  let filteredTasks;
   let pathname = ownProps.params.filter;
-  if (ownProps.router.location.pathname.includes("/main/all")) {
-    filteredTasks = Selectors.incompleteTasks(state.tasks.tasks);
-  } else if (pathname === "today") {
-    filteredTasks = Selectors.tasksDueToday(state.tasks.tasks);
-  } else if (pathname === "tomorrow") {
-    filteredTasks = Selectors.tasksDueTomorrow(state.tasks.tasks);
-  } else if (pathname === "thisweek") {
-    filteredTasks = Selectors.tasksDueThisWeek(state.tasks.tasks);
-  } else if (pathname === "completed") {
-    filteredTasks = Selectors.completedTasks(state.tasks.tasks);
-  } else {
-    filteredTasks = Selectors.incompleteTasks(state.tasks.tasks);
+  let filteredTasks;
+
+  let taskFilters = new TaskFilters(state.tasks.tasks);
+  let today = taskFilters.tasksByDueDate("today");
+  let tomorrow = taskFilters.tasksByDueDate("tomorrow");
+  let thisWeek = taskFilters.tasksByDueDate("week");
+  let complete = taskFilters.tasksByStatus(true);
+  let incomplete = taskFilters.tasksByStatus(false);
+
+  switch (pathname) {
+    case "all":
+      filteredTasks = incomplete; break;
+    case "today":
+      filteredTasks = today; break;
+    case "tomorrow":
+      filteredTasks = tomorrow; break;
+    case "thisweek":
+      filteredTasks = thisWeek; break;
+    case "completed":
+      filteredTasks = complete; break;
+    default:
+      filteredTasks = incomplete; break;
   }
+
   return(
     {
       tasks: filteredTasks,
