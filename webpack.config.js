@@ -1,4 +1,5 @@
 // webpack.config.js
+import webpack from 'webpack';
 var path = require('path');
 
 module.exports = {
