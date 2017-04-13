@@ -19,13 +19,15 @@ export default class TaskFilters {
   }
 
   taskDueDate(task) {
-    let taskDate = task.due_date.split("-").map(string => parseInt(string));
-    let dueDate = new Date();
-    dueDate.setFullYear(taskDate[0]);
-    dueDate.setMonth(taskDate[1] - 1);
-    dueDate.setDate(taskDate[2]);
-    dueDate.setHours(0, 0, 0);
-    return dueDate;
+    if (task.due_date) {
+      let taskDate = task.due_date.split("-").map(string => parseInt(string));
+      let dueDate = new Date();
+      dueDate.setFullYear(taskDate[0]);
+      dueDate.setMonth(taskDate[1] - 1);
+      dueDate.setDate(taskDate[2]);
+      dueDate.setHours(0, 0, 0);
+      return dueDate;
+    }
   }
 
   tasksByDueDate(due) {
